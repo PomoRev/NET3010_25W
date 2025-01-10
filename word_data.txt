@@ -1,0 +1,40 @@
+apple - A fruit that keeps the doctor away
+banana - A yellow fruit that monkeys love
+guitar - A musical instrument with strings
+puzzle - A game that challenges your mind
+ocean - A large body of salt water
+planet - A celestial body orbiting a star
+forest - A large area covered with trees
+bridge - A structure built to span a physical obstacle
+castle - A large building typically of the medieval period
+desert - A barren area of landscape with little precipitation
+island - A piece of land surrounded by water
+jungle - A dense forest in a tropical region
+mountain - A large natural elevation of the earth's surface
+valley - A low area between hills or mountains
+volcano - A mountain that erupts with lava
+glacier - A slowly moving mass of ice
+harbor - A place on the coast where ships dock
+lagoon - A shallow body of water separated from a larger sea
+meadow - A field of grass and wildflowers
+prairie - A large open area of grassland
+savanna - A grassy plain in tropical regions
+tundra - A cold, treeless region
+waterfall - A cascade of water falling from a height
+whirlpool - A rapidly rotating mass of water
+canyon - A deep gorge with a river flowing through it
+cliff - A steep rock face
+geyser - A hot spring that intermittently sends up jets of water
+hill - A naturally raised area of land
+plateau - An area of relatively level high ground
+reef - A ridge of jagged rock or coral
+swamp - A wetland with trees and shrubs
+bayou - A marshy outlet of a lake or river
+delta - A landform at the mouth of a river
+fjord - A long, narrow inlet with steep sides
+gorge - A narrow valley between hills or mountains
+marsh - A wetland with grasses and reeds
+oasis - A fertile spot in a desert
+peninsula - A piece of land almost surrounded by water
+strait - A narrow passage of water connecting two seas
+tributary - A river or stream flowing into a larger river or lake

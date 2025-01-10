@@ -7,3 +7,5 @@ organize the material.
 Have a great semester!
 
 Prof. Frank Emanuel, Ph.D, MATh, BTh.
+
+TUTORIAL CLASS

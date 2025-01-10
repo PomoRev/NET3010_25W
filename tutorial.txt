@@ -1,0 +1,45 @@
+   Crossword Puzzle Generator
+
+we can use AI to generate 100 or more words with clues.
+
+layout - html, CLASS
+
+interface for puzzle game (HTML/CSS/JS) 
+
+ - option to start a new puzzle
+ - option to save a puzzle
+ - option to delete an inprogress puzzle
+
+user tracking/login - HTML/JS/PHP/MYSQL
+
+ - simple username/password (in text).
+ - store puzzles with time spent.
+
+puzzle generation engine - JS 
+
+ - need to have words of 5 letters or more and all 
+   words should cross at least one other word.
+ - need to have a way to display a puzzle on the screen when
+   comleted.
+
+puzzle screen - HTML/CSS/JS
+
+ - solving mechanism triggers.
+ - save a puzzle in progress.
+
+solving mechanism with feedback - JS
+
+ - allow words to be entered by clicking on the first letter and 
+   using the keyboard.
+ - needs to move through the word one space at a time.
+ - needs to be able to overwrite previous guesses.
+ - needs to recognize guesses from other words and skip those letter 
+   or provide some feedback. 
+ - recognize when all of the words are guessed correctly.
+ - have a way track time spent on the puzzle and save as solved puzzle.
+
+backend - PHP/MYSQL 
+
+ - we need to be able to save by user a data block of the 
+   current puzzle so solving can be resumed. 
+ - save win time by user.
