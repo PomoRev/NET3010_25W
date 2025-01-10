@@ -19,13 +19,19 @@ puzzle generation engine - JS
 
  - need to have words of 5 letters or more and all 
    words should cross at least one other word.
+ - words should not be duplicated in the puzzle.
+ - create a list of clues for the puzzle. 
+ - clues should be numbered (1-# for across and 1-# for down)
+ - starting letters should have small number beside first letter box.
  - need to have a way to display a puzzle on the screen when
-   comleted.
+   comleted. (move this to puzzle screen task)
 
 puzzle screen - HTML/CSS/JS
 
  - solving mechanism triggers.
  - save a puzzle in progress.
+ - create puzzle display grid (including letters from previously guessed puzzle).
+ - display puzzle as a grid, not one word at a time. 
 
 solving mechanism with feedback - JS
 
@@ -43,3 +49,10 @@ backend - PHP/MYSQL
  - we need to be able to save by user a data block of the 
    current puzzle so solving can be resumed. 
  - save win time by user.
+
+
+EXTRA
+
+ - if we have time add a function to check current guesses, if used disable time tracking, 
+   give a warning if user tries to use this.
+ - give an option to clear all the puzzles attached to a user. 

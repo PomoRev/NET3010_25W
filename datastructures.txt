@@ -1,0 +1,20 @@
+Data Structures for the crossword puzzle.
+
+puzzle
+
+- what to display (numbers, empty boxes, guessed letters, time spent).
+- solved puzzle.
+- list of clues.
+
+wordList
+
+- word
+- clue
+
+user
+
+- username
+- password
+- best time
+- unsolved puzzles
+

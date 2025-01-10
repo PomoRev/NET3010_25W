@@ -1,3 +1,5 @@
+PROOF OF CONCEPT - USING AI TO GENERATE DATABASE OF WORDS AND CLUES.
+
 apple - A fruit that keeps the doctor away
 banana - A yellow fruit that monkeys love
 guitar - A musical instrument with strings
