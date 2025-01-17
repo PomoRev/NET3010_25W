@@ -15,9 +15,12 @@ CLASS 1: Initial Planning
 
 offline
 - adjusted this readme file
-- had ai make the list as a JSON object
+- had ai make the list as a JSON object (will likely need to add more words)
 - created a datastructures file to help keep track of our thinking as 
   to how to construct our objects
+- found a few images as possible background images - talk about creating a collage
 
 CLASS 2: Design and Semantic HTML
+
+
 
