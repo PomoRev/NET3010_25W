@@ -1,0 +1,23 @@
+Overall Design
+
+Uses a newspaper (frontpage) as the inspiration. Nice big 
+title (old elnglish font perhaps). info bar should include 
+general controls as well as indicate if a user is logged in and the 
+amount of time currently spent on this puzzle (HH:MM:SS).
+Puzzle - classic look with numbers in upper right hand corner just
+for word starts.
+Across and Down lists formatted like newspaper articles (where the
+puzzle is like an embedded image on the page.)
+Footer for copyright acknowledgements if any.
+
+User Interface
+
+Drop Down - for controlling saving, bailing, pause (possibly hint)
+
+Puzzle - click numbered box to highlight clue 
+and begin in that box with guess. click twice to change orientation.
+Or click on clue to highlight boxes to begin typing.
+Use the arrow keys to move around in the word without destroying
+letters already placed. We will need to keep track of what clue we
+are on. In all cases across comes first, then down if possible. 
+
