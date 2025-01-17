@@ -22,5 +22,10 @@ offline
 
 CLASS 2: Design and Semantic HTML
 
+- had a design discussion and decided on a foundational design to use
+- decided on a classic puzzle structure
+- built a basic semantic HTML page for our puzzle
 
+offline
 
+- cleaned up the files and added div for instructions

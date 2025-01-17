@@ -1,23 +1,45 @@
-Overall Design
+Overall Page Design
 
-Uses a newspaper (frontpage) as the inspiration. Nice big 
-title (old elnglish font perhaps). info bar should include 
-general controls as well as indicate if a user is logged in and the 
-amount of time currently spent on this puzzle (HH:MM:SS).
-Puzzle - classic look with numbers in upper right hand corner just
-for word starts.
-Across and Down lists formatted like newspaper articles (where the
-puzzle is like an embedded image on the page.)
-Footer for copyright acknowledgements if any.
+    Use a newspaper (frontpage) as the inspiration. 
 
-User Interface
+    Start with a nice big fancy title (old english font perhaps)
 
-Drop Down - for controlling saving, bailing, pause (possibly hint)
+    Follow by an info bar that includes timer, indicator of being logged in, 
+    and general controls. bracket with a line above and below.
 
-Puzzle - click numbered box to highlight clue 
-and begin in that box with guess. click twice to change orientation.
-Or click on clue to highlight boxes to begin typing.
-Use the arrow keys to move around in the word without destroying
-letters already placed. We will need to keep track of what clue we
-are on. In all cases across comes first, then down if possible. 
+    Main Content area consisting of Puzzle, Clues, and Instructions. 
+
+    Footer for any copyright acknowledgements. 
+
+Puzzle
+
+    Classic look (full table) with non-used boxes blacked out.
+
+    Numbers at beginning of words, small and in upper left hand corner. Numbers correspond to clues.
+
+    Clues in two lists (across and down) formatted like block newspaper articles.
+
+    Instructions formatted like an article. 
+
+User Interface Design
+
+    Logged in indicator should also have log out option, being logged out gives you a log in option. (button)
+
+    General controls are in dropdown and include save game, pause game, give up game, load game. 
+
+    Puzzle boxes
+        - clicking on a box that is numbered highlights the box and the corresponding clue (across default)
+        - clicking on a box a second time will highlight the corresponding down clue if any
+        - arrow keys move the highlighted box around updating the hightlighted clue without changing any 
+        existing guessed letters. 
+        - typing a letter when a box is highlighted moves the highlight in the direction of the highlighted clue
+        until the end of the word box is encountered then it simply unhighlights all boxes.
+        - typing a space on a box will remove any guessed letters. 
+        - when the last letter is placed check the puzzle and if it is solved highlight the puzzle, stop 
+        the clock, save the score, and congratulate the gamer. If it is not solved correctly let them continue.
+
+    Clue lists
+        - clicking on a clue will highlight the first letter box for that word and set the orientation of the 
+        guess, it also highlights the clue.
+
 
