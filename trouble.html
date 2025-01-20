@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Prof. Frank Emanuel">
+    <meta name="email" content="emanuef@algonquincollege.com">
+    <meta name="date" content="2025-01-20">
+    <style>
+        body {
+            background-color: rgb(18, 18, 18);
+            color: bisque;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16pt;
+        }
+
+        p, table {
+            width: 90%;
+            margin: 10px auto;
+        }
+
+        header {
+            font-size: 24pt;
+            font-weight: bold;
+        }
+
+        .infotable {
+            border: 2px solid black;
+            border-radius: 5pt;
+        }
+
+        td {
+            word-wrap: normal;
+            text-align: left;
+            padding: 4px 10px;
+        }
+
+        .infotable tr :first-child {
+            background-color: darkgoldenrod;
+            color: blanchedalmond;
+            width: 20%;
+            text-align: center;
+        }
+
+        .example {
+            border: 0 solid yellow;
+            background-color: blueviolet;
+            color:antiquewhite;
+            margin: 10px auto;
+            padding: 12pt 5pt;
+            text-align: center;
+        }
+
+        .first {
+            border-width: 2px;
+        }
+
+        .second {
+            border-width: 2px 6px;
+        }
+
+        .third {
+            border-width: 2px 6px 10px;
+        }
+
+        .fourth {
+            border-width: 2px 6px 10px 15px;
+        }
+
+        .wrapper {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 0 auto;
+            background-color: blue;
+            width: 60%;
+        }
+
+    </style>
+    <title>TRouBLe</title>
+</head>
+<body>
+    <header>TRouBLe</header>
+    <p>
+        TRouBLe is not only a great way to remember the order of 
+        block element values (Top, Right, Bottom, Left), it also
+        is a guide to the shorthand versions of these values.
+    </p>
+    <table class="infotable">
+        <tr>
+            <td>One Value</td>
+            <td>Applied to all four sides</td>
+        </tr>
+        <tr>
+            <td>Two Values</td>
+            <td>
+                First value is applied to Top and Bottom
+                and second value is applied to Right and Left
+            </td>
+        </tr>
+        <tr>
+            <td>Three Values</td>
+            <td>
+                Top takes the first value, Right and Left take the 
+                second value, and Bottom takes the last value.
+            </td>
+        </tr>
+        <tr>
+            <td>Four Values</td>
+            <td>
+                Each side has its own value.
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        This applies to the shorthand attributes of border, 
+        margin, and padding. 
+    </p>
+
+    <p>
+        Let's create an example of each using a 2, 6, 10, and 15 pixel 
+        values.
+    </p>
+
+    <div class="wrapper">
+        <div class="example first">
+            Using border-weight and one value of 2px.
+        </div>
+        <div class="example second">
+            Using border-weight and two values 2px and 6px.
+        </div>
+        <div class="example third">
+            Using border-width and three values 2, 6, and 10px.
+        </div>
+        <div class="example fourth">
+            Using border-width and four different values.
+        </div>
+    </div>
+
+    <p>
+        This order holds true in CSS until we get to grid
+        and positioning elements on the grid. 
+    </p>
+
+</body>
+</html>
