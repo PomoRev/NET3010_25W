@@ -29,3 +29,6 @@ CLASS 2: Design and Semantic HTML
 offline
 
 - cleaned up the files and added div for instructions
+- created a bit of collateral images for the initial page design
+- played around with design a bit, will demo in tutorial class how I set things up
+
