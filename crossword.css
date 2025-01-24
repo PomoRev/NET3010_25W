@@ -2,8 +2,8 @@
 
 :root {
     
-    --bgcolour: #eaddcb;
-    --fgcolour: #1d1c1b;
+    --bgcolour: #f7f7ea;
+    --fgcolour: #2c2b2a;
 
 }
 
@@ -12,35 +12,41 @@ body {
     background-color: var(--bgcolour);
     color: var(--fgcolour);
 
+    min-width: 1000px;
+
 }
 
 
-header, #heading {
-    font-family:cursive;
+header, #heading, footer {
+    font-family: cursive;
     font-size: 24pt;
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-
-    width: 100%;
+    padding: 0 10pt;
 
 }
 
-#heading {
+#heading, footer {
 
     font-size: 12pt;
-    margin: 2px 5px;
+    margin: 2px 5px 4px;
     border: solid 2px var(--fgcolour);
     border-left: 0;
     border-right: 0;
 
 }
 
+footer {
+
+    border-bottom: 0;
+
+}
+
 .blurb, .price, .masthead {
 
-    width: 15%;
     font-size: 10pt;
    
 }
@@ -52,7 +58,7 @@ header, #heading {
 }
 
 .price img {
-    max-height: 50px;
+    max-height: 70px;
 }
 
 .masthead {
@@ -66,10 +72,122 @@ header, #heading {
     border: solid 2px var(--fgcolour);
     padding: 10px 12px;
     font-style: italic;
+    width: 200px;
+    margin-right: 14pt;
 
 }
 
-@media screen and (max-width: 800px) {
+/* control line  */
+
+nav {
+
+    position: relative;
+    display: inline-block;
+
+    background-color: var(--bgcolour);
+    color: var(--fgcolour);
+    margin: 0 5pt;
+
+}
+
+.dropdown {
+
+    display: none;
+    background-color: var(--bgcolour);
+    border:none;
+    position: absolute;
+    z-index: 1;
+
+}
+
+.dropdown button {
+    display: block;
+}
+
+#puzzlecontrol, .dropdown button {
+
+    font-family: cursive;
+    font-size: 14pt;
+    border: none;
+    background-color: var(--bgcolour);
+
+}
+
+nav:hover .dropdown {
+    display: block;
+}
+
+.dropdown button:hover, #puzzlecontrol:hover {
+
+    color: var(--bgcolour);
+    background-color: var(--fgcolour);
+
+}
+
+main {
+
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+
+}
+
+#puzzle {
+
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center;
+
+}
+
+#across {
+
+    grid-area: 1 / 2 / 3 / 3;
+    border: blue 2px solid;
+
+}
+
+#down {
+
+    grid-area: 1 / 3 / 3 / 4;
+    border: solid 2px black;
+
+}
+
+#instructions {
+
+    grid-area: 2 / 1 / 3 / 2;
+
+}
+
+td {
+
+    border: solid 2px var(--fgcolour);
+    height: 24pt;
+    width: 24pt;
+
+    background-color: var(--fgcolour);
+
+}
+
+.title, p {
+
+    font-family: cursive;
+    font-size: 18pt;
+    color: var(--fgcolour);
+    font-weight: bold;
+
+}
+
+p {
+
+    font-size: 16pt;
+    font-weight: normal;
+}
+
+
+
+/* responsive elements */
+
+@media screen and (max-width: 900px) {
 
     .blurb{
         visibility: hidden;

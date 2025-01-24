@@ -19,21 +19,32 @@
             alt="Crossword page title">
         </div>
         <div class="blurb">
-            Solving crosswords is great for the brain!
+            Solving crosswords<br>
+            is great for the brain!
         </div>
     </header>
 
     <div id="heading">
         <span id="username">Anonymous</span>
         <span id="timer">00:00:00</span>
-        <span id="puzzlecontrol">Control Puzzle</span>
+        <nav>
+            <button id="puzzlecontrol">Control Puzzle</button>
+            <div class="dropdown">
+                <button>login</button>
+                <button>new game</button>
+                <button>save game</button>
+                <button>load game</button>
+            </div>
+        </nav>
     </div>
+
+    
 
     <main>
         <div id="puzzle">
             <table>
                 <tr>
-                    <td><span class="number">1</span><span class="letter">A</span></td>
+                    <td><span class="number"></span><span class="letter"></span></td>
                     <td><span class="number"></span><span class="letter"></span></td>
                     <td><span class="number"></span><span class="letter"></span></td>
                     <td><span class="number"></span><span class="letter"></span></td>
@@ -202,9 +213,32 @@
                 </tr>
             </table>
         </div>
-        <div class="cluelist"><div class="title">Across</div></div>
-        <div class="cluelist"><div class="title">Down</div></div>
-        <div id="instructions">How to play with this crossword.</div>
+        <div class="cluelist" id="across">
+            <div class="title">Across</div>
+        
+        </div>
+        <div class="cluelist" id="down"><div class="title">Down</div></div>
+        <div id="instructions">
+            <div class="title">How to Play the Crossword Puzzle Game</div>
+            <p>
+                Click on a clue to highlight its corresponding row or column in the puzzle 
+                and use your keyboard to fill in the squares. The letters will automatically 
+                move to the next square. You can also use your arrow keys to move between 
+                squares or click on any square select that word direction, once for across and 
+                twice for down. You can use the backspace key to delete letters, and typing a new letter in a 
+                selected square will overwrite any existing letter.
+            </p>
+            <p>          
+                The puzzle will check to see if it is completely filled correctly, until
+                that time a timer will track your progress. When you have completed the puzzle,
+                registered users will have their puzzle time score recorded with the date of 
+                completion. You can pause the game from the menu, but clicking anywhere on the 
+                puzzle will restart the timer. 
+            </p>
+            <p>
+                Above all have fun.
+            </p>
+        </div>
     </main>
     <footer>Bottom of the Page</footer>
 </body>

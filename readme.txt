@@ -38,3 +38,10 @@ CLASS 3: Implementing the Layout
 - used flex to organize header and heading elements on page
 - talked about TRouBLe
 
+offline
+
+- created drop down menu using CSS and buttons
+- adjusted banner elements
+- set up grid for main section
+- added ai generated instructions (which I massaged to fit our program)
+
