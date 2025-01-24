@@ -1,5 +1,82 @@
-header {
-    font-family:cursive
+/* general CSS for our Crossword Page */
+
+:root {
+    
+    --bgcolour: #eaddcb;
+    --fgcolour: #1d1c1b;
+
+}
+
+body {
+
+    background-color: var(--bgcolour);
+    color: var(--fgcolour);
+
+}
+
+
+header, #heading {
+    font-family:cursive;
     font-size: 24pt;
     text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
 }
+
+#heading {
+
+    font-size: 12pt;
+    margin: 2px 5px;
+    border: solid 2px var(--fgcolour);
+    border-left: 0;
+    border-right: 0;
+
+}
+
+.blurb, .price, .masthead {
+
+    width: 15%;
+    font-size: 10pt;
+   
+}
+
+.masthead img {
+
+    max-height: 100px;
+
+}
+
+.price img {
+    max-height: 50px;
+}
+
+.masthead {
+
+    width:60%;
+
+}
+
+.blurb {
+
+    border: solid 2px var(--fgcolour);
+    padding: 10px 12px;
+    font-style: italic;
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .blurb{
+        visibility: hidden;
+    }
+
+};
+    
+
+
+

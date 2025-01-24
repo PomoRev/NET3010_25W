@@ -32,3 +32,9 @@ offline
 - created a bit of collateral images for the initial page design
 - played around with design a bit, will demo in tutorial class how I set things up
 
+CLASS 3: Implementing the Layout
+
+- chose colours and used CSS variables
+- used flex to organize header and heading elements on page
+- talked about TRouBLe
+
