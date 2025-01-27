@@ -28,8 +28,9 @@
 			}
 									
 			.picturegallery {
+				flex-direction: column-reverse;
 				display: flex;
-				flex-flow: row wrap;
+				flex-flow: row nowrap;
 				justify-content: flex-end;
 			}
 			
@@ -65,9 +66,9 @@
 		<br>
 		
 		<div class="example">
-			<div class="tboxa">A</div>
-			<div class="tboxb">B</div>
-			<div class="tboxc">C</div>
+			<div class="tboxa" style="order: 2;">A</div>
+			<div class="tboxb" style="order: 1;">B</div>
+			<div class="tboxc" style="order: 3;">C</div>
 		</div>
 		
 	</body>
