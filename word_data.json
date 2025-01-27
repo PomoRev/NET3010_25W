@@ -2,15 +2,15 @@
     "words": [
         {
             "word": "elephant",
-            "clue": "A large mammal with a trunk"
+            "clue": "Self-showering animal"
         },
         {
             "word": "giraffe",
-            "clue": "A tall animal with a long neck"
+            "clue": "Has a long neck"
         },
         {
             "word": "computer",
-            "clue": "An electronic device for storing and processing data"
+            "clue": "Ubiquitous machine of our age"
         },
         {
             "word": "mountain",
@@ -26,7 +26,7 @@
         },
         {
             "word": "bicycle",
-            "clue": "A vehicle composed of wheels held in a frame"
+            "clue": "Two wheels held in a frame"
         },
         {
             "word": "library",
@@ -42,7 +42,7 @@
         },
         {
             "word": "volcano",
-            "clue": "A crater through which lava erupts"
+            "clue": "A hot crater"
         },
         {
             "word": "diamond",
@@ -58,7 +58,7 @@
         },
         {
             "word": "jungle",
-            "clue": "A dense forest and tangled vegetation"
+            "clue": "Place of tangled vegetation"
         },
         {
             "word": "kangaroo",
@@ -70,7 +70,7 @@
         },
         {
             "word": "microscope",
-            "clue": "Used for viewing very small objects"
+            "clue": "To see very small objects"
         },
         {
             "word": "notebook",
@@ -94,7 +94,7 @@
         },
         {
             "word": "satellite",
-            "clue": "Placed in orbit around another celestial body"
+            "clue": "Placed in orbit"
         },
         {
             "word": "telescope",
@@ -106,7 +106,7 @@
         },
         {
             "word": "vaccine",
-            "clue": "Used to stimulate the production of antibodies"
+            "clue": "Stimulates antibody production"
         },
         {
             "word": "whistle",
@@ -117,20 +117,12 @@
             "clue": "A hammered musical instrument"
         },
         {
-            "word": "yacht",
-            "clue": "A medium-sized sailboat"
-        },
-        {
-            "word": "zeppelin",
-            "clue": "A large airship"
-        },
-        {
             "word": "avalanche",
-            "clue": "Snow, ice, and rocks falling down a mountainside"
+            "clue": "Falling down a mountainside"
         },
         {
             "word": "butterfly",
-            "clue": "Has two pairs of large fairylike wings"
+            "clue": "Has large fairylike wings"
         },
         {
             "word": "caterpillar",
@@ -142,11 +134,11 @@
         },
         {
             "word": "eclipse",
-            "clue": "The shadow of one celestial body falls on another"
+            "clue": "The shadow of one celestial body"
         },
         {
             "word": "fireworks",
-            "clue": "Makes spectacular explosion when ignited"
+            "clue": "Paint the sky"
         },
         {
             "word": "glacier",
@@ -154,7 +146,7 @@
         },
         {
             "word": "hologram",
-            "clue": "Image formed by the interference of light beams"
+            "clue": "The interference of light beams"
         },
         {
             "word": "island",
@@ -166,11 +158,11 @@
         },
         {
             "word": "kaleidoscope",
-            "clue": "A toy of mirrors and pieces of colored glass"
+            "clue": "Mirrors and colored glass"
         },
         {
             "word": "labyrinth",
-            "clue": "A network of passages or paths"
+            "clue": "A network of passages"
         },
         {
             "word": "meteor",
@@ -185,7 +177,7 @@
         },
         {
             "word": "penguin",
-            "clue": "A flightless seabird"
+            "clue": "A fancy dressed seabird"
         },
         {
             "word": "quarantine",
@@ -217,11 +209,11 @@
         },
         {
             "word": "xenophobia",
-            "clue": "Prejudice against people from other countries"
+            "clue": "Prejudice against foreigners"
         },
         {
             "word": "yogurt",
-            "clue": "A sourish food prepared from milk"
+            "clue": "Remedy for hot food"
         },
         {
             "word": "zodiac",
@@ -269,19 +261,15 @@
         },
         {
             "word": "kiwi",
-            "clue": "A flightless bird from New Zealand"
+            "clue": "A flightless bird"
         },
         {
             "word": "landscape",
-            "clue": "The visible features of an area of land"
+            "clue": "The visible features of a place"
         },
         {
             "word": "mammoth",
             "clue": "An elephant ancestor"
-        },
-        {
-            "word": "nectar",
-            "clue": "Secreted by plants"
         },
         {
             "word": "obsidian",
@@ -297,19 +285,19 @@
         },
         {
             "word": "reef",
-            "clue": "A wet ridge of jagged rock, coral, or sand"
+            "clue": "A wet ridge of rock and coral"
         },
         {
             "word": "savanna",
-            "clue": "A grassy plain"
+            "clue": "Grassy plain"
         },
         {
             "word": "tundra",
-            "clue": "Treeless Arctic region"
+            "clue": "Arctic region"
         },
         {
             "word": "uranium",
-            "clue": "A radioactive metal"
+            "clue": "A dense metal"
         },
         {
             "word": "vortex",
@@ -317,15 +305,15 @@
         },
         {
             "word": "wilderness",
-            "clue": "An uncultivated region"
+            "clue": "An uncultivated land"
         },
         {
             "word": "xenon",
-            "clue": "A heavy and colorless gas"
+            "clue": "A colorless gas"
         },
         {
             "word": "yawn",
-            "clue": "An involuntary opening of the mouth"
+            "clue": "Sign of fatigue"
         },
         {
             "word": "zephyr",
@@ -353,7 +341,7 @@
         },
         {
             "word": "fjord",
-            "clue": "An inlet of the sea between cliffs"
+            "clue": "Found between cliffs"
         },
         {
             "word": "gondola",
@@ -461,11 +449,11 @@
         },
         {
             "word": "owl",
-            "clue": "Animal that is always wondering who"
+            "clue": "Animal that is always asking who"
         },
         {
             "word": "pen",
-            "clue": "Place to keep livestock"
+            "clue": "Place to keep animals"
         },
         {
             "word": "rat",
@@ -490,10 +478,6 @@
         {
             "word": "web",
             "clue": "A network of fine threads"
-        },
-        {
-            "word": "yak",
-            "clue": "A large domesticated ox"
         },
         {
             "word": "zip",
@@ -521,11 +505,11 @@
         },
         {
             "word": "forest",
-            "clue": "A large group of trees"
+            "clue": "Trees make this hard to see"
         },
         {
             "word": "grapes",
-            "clue": "Used to make wine"
+            "clue": "Fruit of the vine"
         },
         {
             "word": "honey",
@@ -649,7 +633,7 @@
         },
         {
             "word": "mole",
-            "clue": "A small burrowing mammal"
+            "clue": "A burrowing mammal"
         },
         {
             "word": "seal",
@@ -706,6 +690,349 @@
         {
             "word": "swan",
             "clue": "A graceful water bird"
+        },
+        {
+            "word": "turtle",
+            "clue": "A slow moving pet"
+        },
+        {
+            "word": "vulture",
+            "clue": "Bad sign in the sky"
+        },
+        {
+            "word": "walrus",
+            "clue": "A large mammal with tusks"
+        },
+        {
+            "word": "xerox",
+            "clue": "Innovators in duplicate"
+        },
+        {
+            "word": "yeti",
+            "clue": "Abominable creature"
+        },
+        {
+            "word": "zebra",
+            "clue": "Black and white"
+        },
+        {
+            "word": "accordion",
+            "clue": "A squeeze box"
+        },
+        {
+            "word": "barracuda",
+            "clue": "A predatory fish"
+        },
+        {
+            "word": "cactus",
+            "clue": "Grow in the desert"
+        },
+        {
+            "word": "emu",
+            "clue": "A flightless bird"
+        },
+        {
+            "word": "falcon",
+            "clue": "Bird that can be handled"
+        },
+        {
+            "word": "gorilla",
+            "clue": "A large primate"
+        },
+        {
+            "word": "hedgehog",
+            "clue": "A spiny mammal"
+        },
+        {
+            "word": "jellyfish",
+            "clue": "Stinging sea creature"
+        },
+        {
+            "word": "parrot",
+            "clue": "A talkative pet"
+        },
+        {
+            "word": "quail",
+            "clue": "A small bird"
+        },
+        {
+            "word": "rhinoceros",
+            "clue": "A dangerous animal"
+        },
+        {
+            "word": "squid",
+            "clue": "Cousin of the kraken"
+        },
+        {
+            "word": "tarantula",
+            "clue": "Hairy with a lot of legs"
+        },
+        {
+            "word": "urchin",
+            "clue": "Child on the street"
+        },
+        {
+            "word": "viper",
+            "clue": "A venomous snake"
+        },
+        {
+            "word": "wombat",
+            "clue": "A burrowing marsupial"
+        },
+        {
+            "word": "xenopus",
+            "clue": "A genus of aquatic frogs"
+        },
+        {
+            "word": "yak",
+            "clue": "A long-haired bovid"
+        },
+        {
+            "word": "zebu",
+            "clue": "Cow with a hump"
+        },
+        {
+            "word": "antelope",
+            "clue": "They play on the range"
+        },
+        {
+            "word": "buffalo",
+            "clue": "A large bovid"
+        },
+        {
+            "word": "cheetah",
+            "clue": "Fast cat"
+        },
+        {
+            "word": "dingo",
+            "clue": "A wild dog that might eat babies"
+        },
+        {
+            "word": "flamingo",
+            "clue": "A pink bird"
+        },
+        {
+            "word": "gazelle",
+            "clue": "Graceful prey of lions"
+        },
+        {
+            "word": "hippopotamus",
+            "clue": "Most dangerous mammal"
+        }
+        ,
+        {
+            "word": "ibex",
+            "clue": "A wild goat"
+        },
+        {
+            "word": "jackal",
+            "clue": "A wild dog"
+        },
+        {
+            "word": "llama",
+            "clue": "Make soft wool"
+        },
+        {
+            "word": "mongoose",
+            "clue": "Enemy of the snake"
+        },
+        {
+            "word": "ocelot",
+            "clue": "A small wild cat"
+        },
+        {
+            "word": "puma",
+            "clue": "A cougar"
+        },
+        {
+            "word": "reindeer",
+            "clue": "Arctic deer"
+        },
+        {
+            "word": "sloth",
+            "clue": "A slow-moving mammal"
+        },
+        {
+            "word": "tapir",
+            "clue": "A mammal with a short trunk"
+        },
+        {
+            "word": "urial",
+            "clue": "A wild sheep"
+        },
+        {
+            "word": "vicuna",
+            "clue": "South American camels"
+        },
+        {
+            "word": "wolverine",
+            "clue": "Ornery superhero"
+        },
+        {
+            "word": "xerus",
+            "clue": "Ground squirrels"
+        },
+        {
+            "word": "yellowjacket",
+            "clue": "A hunting wasp"
+        },
+        {
+            "word": "zorilla",
+            "clue": "A striped polecat"
+        },
+        {
+            "word": "alpaca",
+            "clue": "Spitting animal"
+        },
+        {
+            "word": "bison",
+            "clue": "Run off cliffs in Canada"
+        },
+        {
+            "word": "chimpanzee",
+            "clue": "A great ape"
+        },
+        {
+            "word": "dugong",
+            "clue": "A sea cow"
+        },
+        {
+            "word": "echidna",
+            "clue": "A spiny critter"
+        },
+        {
+            "word": "fennec",
+            "clue": "A desert fox"
+        },
+        {
+            "word": "gecko",
+            "clue": "Always sticks around"
+        },
+        {
+            "word": "hyena",
+            "clue": "A laughing animal"
+        },
+        {
+            "word": "ibis",
+            "clue": "Egyptian bird"
+        },
+        {
+            "word": "jaguar",
+            "clue": "A wild American cat"
+        },
+        {
+            "word": "kudu",
+            "clue": "A large antelope"
+        },
+        {
+            "word": "astronaut",
+            "clue": "Travels in space"
+        },
+        {
+            "word": "bridge",
+            "clue": "Spans a physical obstacle"
+        },
+        {
+            "word": "castle",
+            "clue": "A fortified building"
+        },
+        {
+            "word": "desert",
+            "clue": "Dry area"
+        },
+        {
+            "word": "engine",
+            "clue": "Brought on the Industrial Age"
+        },
+        {
+            "word": "fountain",
+            "clue": "Spits water into the air"
+        },
+        {
+            "word": "garden",
+            "clue": "Gnome home"
+        },
+        START HERE
+        {
+            "word": "hospital",
+            "clue": "A place where sick or injured people are treated"
+        },
+        {
+            "word": "lighthouse",
+            "clue": "A tower with a light to guide ships"
+        },
+        {
+            "word": "observatory",
+            "clue": "A building equipped for observing celestial events"
+        },
+        {
+            "word": "quarry",
+            "clue": "A place where stone or minerals are extracted"
+        },
+        {
+            "word": "river",
+            "clue": "A large natural stream of water flowing in a channel"
+        },
+        {
+            "word": "stadium",
+            "clue": "A large structure for sports or entertainment events"
+        },
+        {
+            "word": "temple",
+            "clue": "A building devoted to worship"
+        },
+        {
+            "word": "university",
+            "clue": "An institution of higher education and research"
+        },
+        {
+            "word": "yacht",
+            "clue": "A medium-sized sailboat"
+        },
+        {
+            "word": "zeppelin",
+            "clue": "A large airship"
+        }
+        ,
+        {
+            "word": "an",
+            "clue": "A short article"
+        },
+        {
+            "word": "be",
+            "clue": "To exist"
+        },
+        {
+            "word": "do",
+            "clue": "To perform an action"
+        },
+        {
+            "word": "go",
+            "clue": "To move from one place to another"
+        },
+        {
+            "word": "if",
+            "clue": "A conditional word"
+        },
+        {
+            "word": "it",
+            "clue": "A pronoun for a thing"
+        },
+        {
+            "word": "me",
+            "clue": "A pronoun for oneself"
+        },
+        {
+            "word": "no",
+            "clue": "A negative response"
+        },
+        {
+            "word": "on",
+            "clue": "A preposition indicating position"
+        },
+        {
+            "word": "up",
+            "clue": "A direction opposite to down"
         }
     ]
 }
