@@ -488,10 +488,6 @@
             "clue": "A vehicle for moving goods"
         },
         {
-            "word": "web",
-            "clue": "A network of fine threads"
-        },
-        {
             "word": "yak",
             "clue": "A large domesticated ox"
         },
@@ -706,6 +702,263 @@
         {
             "word": "swan",
             "clue": "A graceful water bird"
+        },
+        {
+            "word": "web",
+            "clue": "A network of fine threads"
+        },
+        {
+            "word": "an",
+            "clue": "A single unit"
+        },
+        {
+            "word": "it",
+            "clue": "A clown"
+        },
+        {
+            "word": "go",
+            "clue": "Drive the car"
+        },
+        {
+            "word": "up",
+            "clue": "Pixar movie"
+        },
+        {
+            "word": "tree",
+            "clue": "Branches out"
+        },
+        {
+            "word": "fish",
+            "clue": "Water dweller"
+        },
+        {
+            "word": "bird",
+            "clue": "Congregate in the air"
+        },
+        {
+            "word": "lion",
+            "clue": "Protects the pride"
+        },
+        {
+            "word": "arch",
+            "clue": "Curved structure"
+        },
+        {
+            "word": "balcony",
+            "clue": "Seeing from above"
+        },
+        {
+            "word": "column",
+            "clue": "Vertical feature"
+        },
+        {
+            "word": "dome",
+            "clue": "Covers like a bowl"
+        },
+        {
+            "word": "facade",
+            "clue": "False first impression"
+        },
+        {
+            "word": "gargoyle",
+            "clue": "Grace ancient towers"
+        },
+        {
+            "word": "keystone",
+            "clue": "Keeps it all together"
+        },
+        {
+            "word": "lintel",
+            "clue": "A horizontal support"
+        },
+        {
+            "word": "nave",
+            "clue": "Sanctuary"
+        },
+        {
+            "word": "pediment",
+            "clue": "Upper part of a building"
+        },
+        {
+            "word": "rotunda",
+            "clue": "In the round"
+        },
+        {
+            "word": "spire",
+            "clue": "Tip of the tower"
+        },
+        {
+            "word": "truss",
+            "clue": "Roof support"
+        },
+        {
+            "word": "vault",
+            "clue": "Where the cash is"
+        },
+        {
+            "word": "router",
+            "clue": "Directs your data"
+        },
+        {
+            "word": "firewall",
+            "clue": "Keep out intruders"
+        },
+        {
+            "word": "switch",
+            "clue": "Exchange"
+        },
+        {
+            "word": "modem",
+            "clue": "Computers over the phone"
+        },
+        {
+            "word": "ethernet",
+            "clue": "Wired network technology"
+        },
+        {
+            "word": "bandwidth",
+            "clue": "How much you can handle"
+        },
+        {
+            "word": "latency",
+            "clue": "A delay"
+        },
+        {
+            "word": "faith",
+            "clue": "To have confidence"
+        },
+        {
+            "word": "prayer",
+            "clue": "Kneeling activity"
+        },
+        {
+            "word": "scripture",
+            "clue": "A religions favourite writings"
+        },
+        {
+            "word": "divine",
+            "clue": "Godlike"
+        },
+        {
+            "word": "grace",
+            "clue": "A gift of the divine"
+        },
+        {
+            "word": "sacrament",
+            "clue": "Baptism"
+        },
+        {
+            "word": "karma",
+            "clue": "Law of reciprocity"
+        },
+        {
+            "word": "nirvana",
+            "clue": "Freedom from suffering"
+        },
+        {
+            "word": "torah",
+            "clue": "First testament"
+        },
+        {
+            "word": "quran",
+            "clue": "Begins with a prayer"
+        },
+        {
+            "word": "veda",
+            "clue": "Ancient sacred texts"
+        },
+        {
+            "word": "zen",
+            "clue": "Calm and peaceful"
+        },
+        {
+            "word": "yoga",
+            "clue": "Preparation to be still before the divine"
+        },
+        {
+            "word": "mantra",
+            "clue": "Meaningful repitition"
+        },
+        {
+            "word": "shinto",
+            "clue": "Traditional island religion"
+        },
+        {
+            "word": "novel",
+            "clue": "A long writing"
+        },
+        {
+            "word": "poem",
+            "clue": "Sometimes this slams"
+        },
+        {
+            "word": "author",
+            "clue": "One who writes"
+        },
+        {
+            "word": "chapter",
+            "clue": "A division"
+        },
+        {
+            "word": "plot",
+            "clue": "A storied train"
+        },
+        {
+            "word": "genre",
+            "clue": "Literary category"
+        },
+        {
+            "word": "protagonist",
+            "clue": "The central figure"
+        },
+        {
+            "word": "antagonist",
+            "clue": "Puts up a fight"
+        },
+        {
+            "word": "narrator",
+            "clue": "The voice in your head"
+        },
+        {
+            "word": "setting",
+            "clue": "Describes the context"
+        },
+        {
+            "word": "theme",
+            "clue": "On brand"
+        },
+        {
+            "word": "dialogue",
+            "clue": "This takes at least two people"
+        },
+        {
+            "word": "metaphor",
+            "clue": "Comparative words"
+        },
+        {
+            "word": "simile",
+            "clue": "This is something like"
+        },
+        {
+            "word": "climax",
+            "clue": "Literary pinnacle"
+        },
+        {
+            "word": "resolution",
+            "clue": "Brings things together"
+        },
+        {
+            "word": "fable",
+            "clue": "Folk story"
+        },
+        {
+            "word": "legend",
+            "clue": "An index"
+        },
+        {
+            "word": "epic",
+            "clue": "A heroes tale"
         }
     ]
+
 }
