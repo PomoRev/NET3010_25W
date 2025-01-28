@@ -44,4 +44,7 @@ offline
 - adjusted banner elements
 - set up grid for main section
 - added ai generated instructions (which I massaged to fit our program)
+- continued to update the word list, we can not have too many words
+
+
 
