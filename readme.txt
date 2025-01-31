@@ -49,3 +49,16 @@ offline
 CLASS 4: Preparing to code
 
 - worked through the algorithms to help us code a crossword generator
+
+
+offline
+
+- updated the datastructures to reflect the work we did on developing 
+  our algorithms/problem breakdown.
+- created some identified datastructures and empty functions to help us
+  organize our new codebase.
+- modified some of our design structure to allow for data points that 
+  were identified in the datastructure work. 
+
+
+

@@ -64,6 +64,7 @@ Do the following NUMWORDS times:
         b) increment the next new number value by 1.
         c) put the clue into the appropriate clue list by the start number.
         d) put the letters for the word into the puzzle array.
+        e) mark word as used in word list
 
         increment number of words chosen for loop end condition
 
@@ -77,4 +78,4 @@ End of word placement loop.
 
 6) display the clue lists.
 
-7) activate the play puzzle code.
+7) activate the play puzzle code (start timer)
