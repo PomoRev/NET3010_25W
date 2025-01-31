@@ -45,3 +45,6 @@ offline
 - set up grid for main section
 - added ai generated instructions (which I massaged to fit our program)
 
+CLASS 4: Preparing to code
+
+- 

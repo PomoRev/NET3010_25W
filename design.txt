@@ -43,3 +43,38 @@ User Interface Design
         guess, it also highlights the clue.
 
 
+Generating a Puzzle Steps
+
+1) create an empty puzzle array 2D based on size of puzzle \
+    board (e1: number for word starts (0), e2: letter 
+    assigned (NOLETTER) ) and 2 empty clue lists
+
+Do the following NUMWORDS times:
+
+    2) Grab a random word that is no longer than the puzzle MAXWIDTH
+
+    3) Find a place where this word fits respecting words already placed
+    (words can only overlap where the share a letter 
+    and there must be a space after a word before the next word
+    orientation should check horizontal first then vertical. )
+
+    4) If spot found
+        WRAP IN FUNCTION - addWord() 
+        a) add number for word start if not already numbered.
+        b) increment the next new number value by 1.
+        c) put the clue into the appropriate clue list by the start number.
+        d) put the letters for the word into the puzzle array.
+
+        increment number of words chosen for loop end condition
+
+        else 
+        
+        go back to step 2
+
+End of word placement loop.
+
+5) Display the puzzle unfilled.
+
+6) display the clue lists.
+
+7) activate the play puzzle code.
