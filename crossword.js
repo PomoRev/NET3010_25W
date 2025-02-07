@@ -21,6 +21,8 @@ const MAXHEIGHT = 12;                           /* height of the puzzle in chara
 
 function createNewPuzzle() {
 
+    // Main function for puzzle creation 
+
 }
 
 function addWord() {
