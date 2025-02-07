@@ -1,4 +1,4 @@
-{
+const wordList = {
     "words": [
         {
             "word": "elephant",
