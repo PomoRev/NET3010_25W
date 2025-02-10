@@ -7,14 +7,14 @@
 
 // Constants 
 
-const NOLETTER = Symbol('NOLETTER', {constant: true});          /* token for an empty square */
+const NOLETTER = '?';                                           /* token for an empty square */
 const NONUMBER = 0; /* token for a square that has no number to indicate the start of a word */
 const NOBESTTIME = Symbol('NOBESTTIME', {constant: true});         /* no saved best time yet */
 const NUMWORDS = 4;             /* number of words to attempt to generate from our word list */
 const MAXWIDTH = 12;                              /* width of the puzzle in character spaces */
 const MAXHEIGHT = 12;                           /* height of the puzzle in characters spaces */
 const ACROSS = true;                /* constant to set the initial direction as binary value */ 
-const BLANKARRAYCONST = { referenceNumber: 0, assignedLetter: NOLETTER }; 
+const BLANKARRAYCONST = { referenceNumber: 0, assignedLetter: '?' }; 
 
 // Global Variables
 
@@ -45,7 +45,7 @@ function createNewPuzzle() {
     let puzzleFull = false;
     let wordsToPlace = NUMWORDS;
 
-    while ( (wordsToPlace > 0) && !puzzleFull ){
+    while ( (wordsToPlace > 0) || !puzzleFull ){
 
         let wordPlaced = false; 
         let spacesAvailable = 0;    
@@ -53,8 +53,14 @@ function createNewPuzzle() {
         // determine how big a space we are working with
         
         do {
+
+console.log( " in loop ");
+
             spacesAvailable = (currentDirection ? MAXWIDTH : MAXHEIGHT) - 
-                (currentDirection ? currentWordLocation.across : currentWordLocation.down);
+                (currentDirection ? currentWordLocation.across : 
+                    currentWordLocation.down);
+
+console.log( " spaces available = " + spacesAvailable );
 
             // find a new starting point on the puzzle 
 
@@ -62,7 +68,8 @@ function createNewPuzzle() {
 
                 // moving around we skip two so that we do not have to worry about bunched words 
 
-                currentDirection ? currentWordLocation.down += 2 : currentWordLocation.across +=2; 
+                currentDirection ? currentWordLocation.down += 2 : 
+                    currentWordLocation.across +=2; 
                 
                 if ( currentWordLocation.across > (MAXWIDTH - 2) ) {
                     currentWordLocation.across = 0;
@@ -72,11 +79,7 @@ function createNewPuzzle() {
                 if ( currentWordLocation.down > MAXHEIGHT ) !puzzleFull;
             }
 
-console.log(puzzleFull);
-
         } while ((spacesAvailable < 1) && !(puzzleFull));
-
-console.log( spacesAvailable + " spaces to work with");
 
         while ( !(wordPlaced) || !(puzzleFull)) {
 
@@ -84,15 +87,13 @@ console.log( spacesAvailable + " spaces to work with");
 
             let candidateIndex = Math.floor (Math.random() * wordList.length );
 
-console.log("trying " + wordList[candidateIndex].word );
-
             // see if it fits in size 
 
             if ( wordList[candidateIndex].word.length <= spacesAvailable ) {
 
             // see if it matches what is possibly there already 
 
-                let puzzleSpot = [];
+                let puzzleSpot = "";
                 let across = currentWordLocation.across;
                 let down = currentWordLocation.down;
 
@@ -125,6 +126,7 @@ console.log("trying " + wordList[candidateIndex].word );
                     // mark the word used
                     
                     wordList[candidateIndex].used = true;
+                    wordPlaced--;
 
                     // record the clue and then change the direction
 
@@ -142,8 +144,7 @@ console.log("trying " + wordList[candidateIndex].word );
 
         }
         
-    }
-
+    } 
 
 }
 
@@ -153,17 +154,22 @@ function wordPlacementChecker ( puzzleSpace, word2 ) {
     // to the target space on the puzzle.
     // returns true if the word will fit. 
 
-// THIS IS FAILING!!!
-
     let wordWorks = true;
+    let tempWord = [];
+
+console.log("comparing " + word2 + " to " + tempWord );
 
     for ( let i = 0; i < word2.length; i++ ){
 
     // look for an invalid letter placement 
 
-        if ( puzzleSpace[i].assignedLetter !== NOLETTER ){
-console.log ( "matching" + puzzleSpace[i].assignedLetter + "with" + word2[i] );
-            if ( puzzleSpace[i].assignedLetter !== word2[i] ) wordWorks = false;
+// HERE IS THE PROBLEM TO FIX
+
+        if ( puzzleSpace[i].assignedLetter != '?' ){
+
+console.log ( "matching[" + puzzleSpace[i].assignedLetter + "]with[" + word2[i] + "]" );
+  
+            if ( puzzleSpace[i].assignedLetter != word2[i] ) wordWorks = false;
         }
     }
 
