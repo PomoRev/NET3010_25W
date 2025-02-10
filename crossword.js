@@ -153,7 +153,7 @@ function wordPlacementChecker ( puzzleSpace, word2 ) {
     // to the target space on the puzzle.
     // returns true if the word will fit. 
 
-THIS IS FAILING!!!
+// THIS IS FAILING!!!
 
     let wordWorks = true;
 
