@@ -1,1037 +1,1295 @@
-const wordList = {
-    "words": [
+const wordList = [
         {
             "word": "elephant",
-            "clue": "Self-showering animal"
+            "clue": "Self-showering animal",
+            "used": false
         },
         {
             "word": "giraffe",
-            "clue": "Has a long neck"
+            "clue": "Has a long neck",
+            "used": false
         },
         {
             "word": "computer",
-            "clue": "Ubiquitous machine of our age"
+            "clue": "Ubiquitous machine of our age",
+            "used": false
         },
         {
             "word": "mountain",
-            "clue": "A large natural elevation"
+            "clue": "A large natural elevation",
+            "used": false
         },
         {
             "word": "ocean",
-            "clue": "A large body of water"
+            "clue": "A large body of water",
+            "used": false
         },
         {
             "word": "airplane",
-            "clue": "A powered flying vehicle"
+            "clue": "A powered flying vehicle",
+            "used": false
         },
         {
             "word": "bicycle",
-            "clue": "Two wheels held in a frame"
+            "clue": "Two wheels held in a frame",
+            "used": false
         },
         {
             "word": "library",
-            "clue": "Where books are kept"
+            "clue": "Where books are kept",
+            "used": false
         },
         {
             "word": "universe",
-            "clue": "All existing matter and space"
+            "clue": "All existing matter and space",
+            "used": false
         },
         {
             "word": "rainbow",
-            "clue": "An arc formed in the sky"
+            "clue": "An arc formed in the sky",
+            "used": false
         },
         {
             "word": "volcano",
-            "clue": "A hot crater"
+            "clue": "A hot crater",
+            "used": false
         },
         {
             "word": "diamond",
-            "clue": "A precious stone"
+            "clue": "A precious stone",
+            "used": false
         },
         {
             "word": "galaxy",
-            "clue": "A system of stars"
+            "clue": "A system of stars",
+            "used": false
         },
         {
             "word": "hurricane",
-            "clue": "A violent wind"
+            "clue": "A violent wind",
+            "used": false
         },
         {
             "word": "jungle",
-            "clue": "Place of tangled vegetation"
+            "clue": "Place of tangled vegetation",
+            "used": false
         },
         {
             "word": "kangaroo",
-            "clue": "A large plant-eating marsupial"
+            "clue": "A large plant-eating marsupial",
+            "used": false
         },
         {
             "word": "language",
-            "clue": "A system of communication"
+            "clue": "A system of communication",
+            "used": false
         },
         {
             "word": "microscope",
-            "clue": "To see very small objects"
+            "clue": "To see very small objects",
+            "used": false
         },
         {
             "word": "notebook",
-            "clue": "A small blank book"
+            "clue": "A small blank book",
+            "used": false
         },
         {
             "word": "octopus",
-            "clue": "An animal with tentacles"
+            "clue": "An animal with tentacles",
+            "used": false
         },
         {
             "word": "pyramid",
-            "clue": "A structure with a square or triangular base"
+            "clue": "A structure with a square or triangular base",
+            "used": false
         },
         {
             "word": "quicksand",
-            "clue": "Loose wet sand"
+            "clue": "Loose wet sand",
+            "used": false
         },
         {
             "word": "robot",
-            "clue": "A machine that automates actions"
+            "clue": "A machine that automates actions",
+            "used": false
         },
         {
             "word": "satellite",
-            "clue": "Placed in orbit"
+            "clue": "Placed in orbit",
+            "used": false
         },
         {
             "word": "telescope",
-            "clue": "To make distant objects appear nearer"
+            "clue": "To make distant objects appear nearer",
+            "used": false
         },
         {
             "word": "umbrella",
-            "clue": "Protection against the rain"
+            "clue": "Protection against the rain",
+            "used": false
         },
         {
             "word": "vaccine",
-            "clue": "Stimulates antibody production"
+            "clue": "Stimulates antibody production",
+            "used": false
         },
         {
             "word": "whistle",
-            "clue": "A device that is blown"
+            "clue": "A device that is blown",
+            "used": false
         },
         {
             "word": "xylophone",
-            "clue": "A hammered musical instrument"
+            "clue": "A hammered musical instrument",
+            "used": false
         },
         {
             "word": "avalanche",
-            "clue": "Falling down a mountainside"
+            "clue": "Falling down a mountainside",
+            "used": false
         },
         {
             "word": "butterfly",
-            "clue": "Has large fairylike wings"
+            "clue": "Has large fairylike wings",
+            "used": false
         },
         {
             "word": "caterpillar",
-            "clue": "Before it was a moth"
+            "clue": "Before it was a moth",
+            "used": false
         },
         {
             "word": "dolphin",
-            "clue": "Whale with a beaklike snout"
+            "clue": "Whale with a beaklike snout",
+            "used": false
         },
         {
             "word": "eclipse",
-            "clue": "The shadow of one celestial body"
+            "clue": "The shadow of one celestial body",
+            "used": false
         },
         {
             "word": "fireworks",
-            "clue": "Paint the sky"
+            "clue": "Paint the sky",
+            "used": false
         },
         {
             "word": "glacier",
-            "clue": "Slowly carves out the landscape"
+            "clue": "Slowly carves out the landscape",
+            "used": false
         },
         {
             "word": "hologram",
-            "clue": "The interference of light beams"
+            "clue": "The interference of light beams",
+            "used": false
         },
         {
             "word": "island",
-            "clue": "Surrounded by water"
+            "clue": "Surrounded by water",
+            "used": false
         },
         {
             "word": "jewelry",
-            "clue": "Personal ornaments"
+            "clue": "Personal ornaments",
+            "used": false
         },
         {
             "word": "kaleidoscope",
-            "clue": "Mirrors and colored glass"
+            "clue": "Mirrors and colored glass",
+            "used": false
         },
         {
             "word": "labyrinth",
-            "clue": "A network of passages"
+            "clue": "A network of passages",
+            "used": false
         },
         {
             "word": "meteor",
-            "clue": "A small body from outer space"
+            "clue": "A small body from outer space",
+            "used": false
         },
         {
             "word": "nebula",
-            "clue": "A cloud of gas and dust"
+            "clue": "A cloud of gas and dust",
+            "used": false
         },{
             "word": "orchid",
-            "clue": "Bizarrely shaped flowers"
+            "clue": "Bizarrely shaped flowers",
+            "used": false
         },
         {
             "word": "penguin",
-            "clue": "A fancy dressed seabird"
+            "clue": "A fancy dressed seabird",
+            "used": false
         },
         {
             "word": "quarantine",
-            "clue": "A state of isolation"
+            "clue": "A state of isolation",
+            "used": false
         },
         {
             "word": "radiation",
-            "clue": "The emission of energy over time"
+            "clue": "The emission of energy over time",
+            "used": false
         },
         {
             "word": "symphony",
-            "clue": "An elaborate musical composition"
+            "clue": "An elaborate musical composition",
+            "used": false
         },
         {
             "word": "tornado",
-            "clue": "A destructive vortex"
+            "clue": "A destructive vortex",
+            "used": false
         },
         {
             "word": "utopia",
-            "clue": "An imagined perfect place"
+            "clue": "An imagined perfect place",
+            "used": false
         },
         {
             "word": "voltage",
-            "clue": "An unit of electromotive force"
+            "clue": "An unit of electromotive force",
+            "used": false
         },
         {
             "word": "waterfall",
-            "clue": "A cascade of water"
+            "clue": "A cascade of water",
+            "used": false
         },
         {
             "word": "xenophobia",
-            "clue": "Prejudice against foreigners"
+            "clue": "Prejudice against foreigners",
+            "used": false
         },
         {
             "word": "yogurt",
-            "clue": "Remedy for hot food"
+            "clue": "Remedy for hot food",
+            "used": false
         },
         {
             "word": "zodiac",
-            "clue": "A significant belt of the heavens"
+            "clue": "A significant belt of the heavens",
+            "used": false
         },
         {
             "word": "asteroid",
-            "clue": "A small rocky body"
+            "clue": "A small rocky body",
+            "used": false
         },
         {
             "word": "bacteria",
-            "clue": "Microscopic single-celled organisms"
+            "clue": "Microscopic single-celled organisms",
+            "used": false
         },
         {
             "word": "canyon",
-            "clue": "A deep, wet gorge"
+            "clue": "A deep, wet gorge",
+            "used": false
         },
         {
             "word": "dinosaur",
-            "clue": "Victims of an asteroid"
+            "clue": "Victims of an asteroid",
+            "used": false
         },
         {
             "word": "earthquake",
-            "clue": "A violent shaking"
+            "clue": "A violent shaking",
+            "used": false
         },
         {
             "word": "fossil",
-            "clue": "The remains of a prehistoric organism"
+            "clue": "The remains of a prehistoric organism",
+            "used": false
         },
         {
             "word": "geyser",
-            "clue": "An elevated hot spring"
+            "clue": "An elevated hot spring",
+            "used": false
         },
         {
             "word": "horizon",
-            "clue": "Land and sky meet here"
+            "clue": "Land and sky meet here",
+            "used": false
         },
         {
             "word": "iceberg",
-            "clue": "Lettuce best served cold"
+            "clue": "Lettuce best served cold",
+            "used": false
         },
         {
             "word": "jigsaw",
-            "clue": "A puzzle with pieces"
+            "clue": "A puzzle with pieces",
+            "used": false
         },
         {
             "word": "kiwi",
-            "clue": "A flightless bird"
+            "clue": "A flightless bird",
+            "used": false
         },
         {
             "word": "landscape",
-            "clue": "The visible features of a place"
+            "clue": "The visible features of a place",
+            "used": false
         },
         {
             "word": "mammoth",
-            "clue": "An elephant ancestor"
+            "clue": "An elephant ancestor",
+            "used": false
         },
         {
             "word": "obsidian",
-            "clue": "Volcanic rock"
+            "clue": "Volcanic rock",
+            "used": false
         },
         {
             "word": "pinnacle",
-            "clue": "The highest point"
+            "clue": "The highest point",
+            "used": false
         },
         {
             "word": "quartz",
-            "clue": "A hard, crystalline mineral"
+            "clue": "A hard, crystalline mineral",
+            "used": false
         },
         {
             "word": "reef",
-            "clue": "A wet ridge of rock and coral"
+            "clue": "A wet ridge of rock and coral",
+            "used": false
         },
         {
             "word": "savanna",
-            "clue": "Grassy plain"
+            "clue": "Grassy plain",
+            "used": false
         },
         {
             "word": "tundra",
-            "clue": "Arctic region"
+            "clue": "Arctic region",
+            "used": false
         },
         {
             "word": "uranium",
-            "clue": "A dense metal"
+            "clue": "A dense metal",
+            "used": false
         },
         {
             "word": "vortex",
-            "clue": "A whirling mass"
+            "clue": "A whirling mass",
+            "used": false
         },
         {
             "word": "wilderness",
-            "clue": "An uncultivated land"
+            "clue": "An uncultivated land",
+            "used": false
         },
         {
             "word": "xenon",
-            "clue": "A colorless gas"
+            "clue": "A colorless gas",
+            "used": false
         },
         {
             "word": "yawn",
-            "clue": "Sign of fatigue"
+            "clue": "Sign of fatigue",
+            "used": false
         },
         {
             "word": "zephyr",
-            "clue": "A gentle breeze"
+            "clue": "A gentle breeze",
+            "used": false
         },
         {
             "word": "albatross",
-            "clue": "A large seabird"
+            "clue": "A large seabird",
+            "used": false
         },
         {
             "word": "bamboo",
-            "clue": "Koala delight"
+            "clue": "Koala delight",
+            "used": false
         },
         {
             "word": "carnivore",
-            "clue": "Enjoys a good steak"
+            "clue": "Enjoys a good steak",
+            "used": false
         },
         {
             "word": "dandelion",
-            "clue": "A common weed"
+            "clue": "A common weed",
+            "used": false
         },
         {
             "word": "eucalyptus",
-            "clue": "Australian evergreen"
+            "clue": "Australian evergreen",
+            "used": false
         },
         {
             "word": "fjord",
-            "clue": "Found between cliffs"
+            "clue": "Found between cliffs",
+            "used": false
         },
         {
             "word": "gondola",
-            "clue": "A canal boat"
+            "clue": "A canal boat",
+            "used": false
         },
         {
             "word": "hummingbird",
-            "clue": "A small but speedy bird"
+            "clue": "A small but speedy bird",
+            "used": false
         },
         {
             "word": "iguana",
-            "clue": "A large lizard"
+            "clue": "A large lizard",
+            "used": false
         },
         {
             "word": "javelin",
-            "clue": "A thrown weapon"
+            "clue": "A thrown weapon",
+            "used": false
         },
         {
             "word": "koala",
-            "clue": "Australian marsupial"
+            "clue": "Australian marsupial",
+            "used": false
         },
         {
             "word": "lemur",
-            "clue": "Has a pointed snout and a long tail"
+            "clue": "Has a pointed snout and a long tail",
+            "used": false
         },
         {
             "word": "mangrove",
-            "clue": "A swamp tree"
+            "clue": "A swamp tree",
+            "used": false
         },
         {
             "word": "narwhal",
-            "clue": "A whale that makes a point"
+            "clue": "A whale that makes a point",
+            "used": false
         },
         {
             "word": "oasis",
-            "clue": "A fertile spot in a desert"
+            "clue": "A fertile spot in a desert",
+            "used": false
         },
         {
             "word": "panda",
-            "clue": "Black and white bear"
+            "clue": "Black and white bear",
+            "used": false
         },
         {
             "word": "quokka",
-            "clue": "A small marsupial"
+            "clue": "A small marsupial",
+            "used": false
         },
         {
             "word": "raccoon",
-            "clue": "A trash panda"
+            "clue": "A trash panda",
+            "used": false
         },
         {
             "word": "ant",
-            "clue": "Hill people of the insect world"
+            "clue": "Hill people of the insect world",
+            "used": false
         },
         {
             "word": "bat",
-            "clue": "A winged night flier"
+            "clue": "A winged night flier",
+            "used": false
         },
         {
             "word": "cat",
-            "clue": "A small, furry predator"
+            "clue": "A small, furry predator",
+            "used": false
         },
         {
             "word": "dog",
-            "clue": "A friendly pet"
+            "clue": "A friendly pet",
+            "used": false
         },
         {
             "word": "egg",
-            "clue": "Sunnyside up"
+            "clue": "Sunnyside up",
+            "used": false
         },
         {
             "word": "fox",
-            "clue": "A cunning mammal"
+            "clue": "A cunning mammal",
+            "used": false
         },
         {
             "word": "gem",
-            "clue": "A desirable stone"
+            "clue": "A desirable stone",
+            "used": false
         },
         {
             "word": "hat",
-            "clue": "Topper"
+            "clue": "Topper",
+            "used": false
         },
         {
             "word": "ink",
-            "clue": "Powerful medium"
+            "clue": "Powerful medium",
+            "used": false
         },
         {
             "word": "jar",
-            "clue": "A mason"
+            "clue": "A mason",
+            "used": false
         },
         {
             "word": "key",
-            "clue": "An important idea"
+            "clue": "An important idea",
+            "used": false
         },
         {
             "word": "log",
-            "clue": "Where we find errors"
+            "clue": "Where we find errors",
+            "used": false
         },
         {
             "word": "map",
-            "clue": "Giving directions"
+            "clue": "Giving directions",
+            "used": false
         },
         {
             "word": "net",
-            "clue": "Slang for the World Wide Web"
+            "clue": "Slang for the World Wide Web",
+            "used": false
         },
         {
             "word": "owl",
-            "clue": "Animal that is always asking who"
+            "clue": "Animal that is always asking who",
+            "used": false
         },
         {
             "word": "pen",
-            "clue": "Place to keep animals"
+            "clue": "Place to keep animals",
+            "used": false
         },
         {
             "word": "rat",
-            "clue": "New York pizza lover"
+            "clue": "New York pizza lover",
+            "used": false
         },
         {
             "word": "sun",
-            "clue": "The center of our solar system"
+            "clue": "The center of our solar system",
+            "used": false
         },
         {
             "word": "tap",
-            "clue": "A device for controlling flow"
+            "clue": "A device for controlling flow",
+            "used": false
         },
         {
             "word": "urn",
-            "clue": "Modern coptic jar"
+            "clue": "Modern coptic jar",
+            "used": false
         },
         {
             "word": "van",
-            "clue": "A vehicle for moving goods"
+            "clue": "A vehicle for moving goods",
+            "used": false
         },
         {
             "word": "web",
-            "clue": "A network of fine threads"
+            "clue": "A network of fine threads",
+            "used": false
         },
         {
             "word": "zip",
-            "clue": "To move really fast"
+            "clue": "To move really fast",
+            "used": false
         },
         {
             "word": "apple",
-            "clue": "Keeps the doctor away"
+            "clue": "Keeps the doctor away",
+            "used": false
         },
         {
             "word": "banana",
-            "clue": "Yellow skinned fruit"
+            "clue": "Yellow skinned fruit",
+            "used": false
         },
         {
             "word": "cherry",
-            "clue": "Tops a sundae"
+            "clue": "Tops a sundae",
+            "used": false
         },
         {
             "word": "dragon",
-            "clue": "A mythical monster"
+            "clue": "A mythical monster",
+            "used": false
         },
         {
             "word": "eagle",
-            "clue": "A large bird of prey"
+            "clue": "A large bird of prey",
+            "used": false
         },
         {
             "word": "forest",
-            "clue": "Trees make this hard to see"
+            "clue": "Trees make this hard to see",
+            "used": false
         },
         {
             "word": "grapes",
-            "clue": "Fruit of the vine"
+            "clue": "Fruit of the vine",
+            "used": false
         },
         {
             "word": "honey",
-            "clue": "Used to make mead"
+            "clue": "Used to make mead",
+            "used": false
         },
         {
             "word": "kitten",
-            "clue": "Come in a litter"
+            "clue": "Come in a litter",
+            "used": false
         },
         {
             "word": "lemon",
-            "clue": "A sour addition to tea"
+            "clue": "A sour addition to tea",
+            "used": false
         },
         {
             "word": "monkey",
-            "clue": "A business animal"
+            "clue": "A business animal",
+            "used": false
         },
         {
             "word": "nectar",
-            "clue": "The wine of the flower"
+            "clue": "The wine of the flower",
+            "used": false
         },
         {
             "word": "orange",
-            "clue": "A juicy fruit"
+            "clue": "A juicy fruit",
+            "used": false
         },
         {
             "word": "peach",
-            "clue": "A fuzzy fruit"
+            "clue": "A fuzzy fruit",
+            "used": false
         },
         {
             "word": "rabbit",
-            "clue": "A bouncy animal"
+            "clue": "A bouncy animal",
+            "used": false
         },
         {
             "word": "safari",
-            "clue": "Hunting an animal in its natural habitat"
+            "clue": "Hunting an animal in its natural habitat",
+            "used": false
         },
         {
             "word": "tiger",
-            "clue": "A large mammal with stripes"
+            "clue": "A large mammal with stripes",
+            "used": false
         },
         {
             "word": "airport",
-            "clue": "A complex of runways and buildings"
+            "clue": "A complex of runways and buildings",
+            "used": false
         },
         {
             "word": "balloon",
-            "clue": "A small rubber party bag"
+            "clue": "A small rubber party bag",
+            "used": false
         },
         {
             "word": "cabinet",
-            "clue": "Has shelves or drawers"
+            "clue": "Has shelves or drawers",
+            "used": false
         },
         {
             "word": "earring",
-            "clue": "Pretty tennitus"
+            "clue": "Pretty tennitus",
+            "used": false
         },
         {
             "word": "factory",
-            "clue": "Where we get the goods"
+            "clue": "Where we get the goods",
+            "used": false
         },
         {
             "word": "gallery",
-            "clue": "Artists display"
+            "clue": "Artists display",
+            "used": false
         },
         {
             "word": "harbour",
-            "clue": "Place of shelter"
+            "clue": "Place of shelter",
+            "used": false
         },
         {
             "word": "kitchen",
-            "clue": "Where a meal is prepared"
+            "clue": "Where a meal is prepared",
+            "used": false
         },
         {
             "word": "orchard",
-            "clue": "Land for keeping the doctor away"
+            "clue": "Land for keeping the doctor away",
+            "used": false
         },
         {
             "word": "painter",
-            "clue": "Colours our world"
+            "clue": "Colours our world",
+            "used": false
         },
         {
             "word": "quilted",
-            "clue": "Patchwork blanket"
+            "clue": "Patchwork blanket",
+            "used": false
         },
         {
             "word": "railway",
-            "clue": "Parallel tracks"
+            "clue": "Parallel tracks",
+            "used": false
         },
         {
             "word": "sandbox",
-            "clue": "Play area for kids"
+            "clue": "Play area for kids",
+            "used": false
         },
         {
             "word": "teacher",
-            "clue": "A doctor"
+            "clue": "A doctor",
+            "used": false
         },
         {
             "word": "frog",
-            "clue": "A small hopper"
+            "clue": "A small hopper",
+            "used": false
         },
         {
             "word": "wolf",
-            "clue": "A wild canine"
+            "clue": "A wild canine",
+            "used": false
         },
         {
             "word": "crab",
-            "clue": "Beware the claws"
+            "clue": "Beware the claws",
+            "used": false
         },
         {
             "word": "deer",
-            "clue": "A beloved animal"
+            "clue": "A beloved animal",
+            "used": false
         },
         {
             "word": "goat",
-            "clue": "Eater of tin cans"
+            "clue": "Eater of tin cans",
+            "used": false
         },
         {
             "word": "hawk",
-            "clue": "A bird of prey"
+            "clue": "A bird of prey",
+            "used": false
         },
         {
             "word": "mole",
-            "clue": "A burrowing mammal"
+            "clue": "A burrowing mammal",
+            "used": false
         },
         {
             "word": "seal",
-            "clue": "A marine mammal"
+            "clue": "A marine mammal",
+            "used": false
         },
         {
             "word": "toad",
-            "clue": "A warty fellow"
+            "clue": "A warty fellow",
+            "used": false
         },
         {
             "word": "zebu",
-            "clue": "A type of cow"
+            "clue": "A type of cow",
+            "used": false
         },
         {
             "word": "lynx",
-            "clue": "A wild cat"
+            "clue": "A wild cat",
+            "used": false
         },
         {
             "word": "clam",
-            "clue": "A shellfish"
+            "clue": "A shellfish",
+            "used": false
         },
         {
             "word": "crow",
-            "clue": "A black bird"
+            "clue": "A black bird",
+            "used": false
         },
         {
             "word": "dove",
-            "clue": "A symbol of peace"
+            "clue": "A symbol of peace",
+            "used": false
         },
         {
             "word": "flea",
-            "clue": "Attracted to pets"
+            "clue": "Attracted to pets",
+            "used": false
         },
         {
             "word": "gnat",
-            "clue": "A small flying insect"
+            "clue": "A small flying insect",
+            "used": false
         },
         {
             "word": "lamb",
-            "clue": "Mary had one of these"
+            "clue": "Mary had one of these",
+            "used": false
         },
         {
             "word": "moth",
-            "clue": "Hangs aroung the light"
+            "clue": "Hangs aroung the light",
+            "used": false
         },
         {
             "word": "newt",
-            "clue": "What a witch turns you into"
+            "clue": "What a witch turns you into",
+            "used": false
         },
         {
             "word": "slug",
-            "clue": "Leaves a trail of slime"
+            "clue": "Leaves a trail of slime",
+            "used": false
         },
         {
             "word": "swan",
-            "clue": "A graceful water bird"
+            "clue": "A graceful water bird",
+            "used": false
         },
         {
             "word": "turtle",
-            "clue": "A slow moving pet"
+            "clue": "A slow moving pet",
+            "used": false
         },
         {
             "word": "vulture",
-            "clue": "Bad sign in the sky"
+            "clue": "Bad sign in the sky",
+            "used": false
         },
         {
             "word": "walrus",
-            "clue": "A large mammal with tusks"
+            "clue": "A large mammal with tusks",
+            "used": false
         },
         {
             "word": "xerox",
-            "clue": "Innovators in duplicate"
+            "clue": "Innovators in duplicate",
+            "used": false
         },
         {
             "word": "yeti",
-            "clue": "Abominable creature"
+            "clue": "Abominable creature",
+            "used": false
         },
         {
             "word": "zebra",
-            "clue": "Black and white"
+            "clue": "Black and white",
+            "used": false
         },
         {
             "word": "accordion",
-            "clue": "A squeeze box"
+            "clue": "A squeeze box",
+            "used": false
         },
         {
             "word": "barracuda",
-            "clue": "A predatory fish"
+            "clue": "A predatory fish",
+            "used": false
         },
         {
             "word": "cactus",
-            "clue": "Grow in the desert"
+            "clue": "Grow in the desert",
+            "used": false
         },
         {
             "word": "emu",
-            "clue": "A flightless bird"
+            "clue": "A flightless bird",
+            "used": false
         },
         {
             "word": "falcon",
-            "clue": "Bird that can be handled"
+            "clue": "Bird that can be handled",
+            "used": false
         },
         {
             "word": "gorilla",
-            "clue": "A large primate"
+            "clue": "A large primate",
+            "used": false
         },
         {
             "word": "hedgehog",
-            "clue": "A spiny mammal"
+            "clue": "A spiny mammal",
+            "used": false
         },
         {
             "word": "jellyfish",
-            "clue": "Stinging sea creature"
+            "clue": "Stinging sea creature",
+            "used": false
         },
         {
             "word": "parrot",
-            "clue": "A talkative pet"
+            "clue": "A talkative pet",
+            "used": false
         },
         {
             "word": "quail",
-            "clue": "A small bird"
+            "clue": "A small bird",
+            "used": false
         },
         {
             "word": "rhinoceros",
-            "clue": "A dangerous animal"
+            "clue": "A dangerous animal",
+            "used": false
         },
         {
             "word": "squid",
-            "clue": "Cousin of the kraken"
+            "clue": "Cousin of the kraken",
+            "used": false
         },
         {
             "word": "tarantula",
-            "clue": "Hairy with a lot of legs"
+            "clue": "Hairy with a lot of legs",
+            "used": false
         },
         {
             "word": "urchin",
-            "clue": "Child on the street"
+            "clue": "Child on the street",
+            "used": false
         },
         {
             "word": "viper",
-            "clue": "A venomous snake"
+            "clue": "A venomous snake",
+            "used": false
         },
         {
             "word": "wombat",
-            "clue": "A burrowing marsupial"
+            "clue": "A burrowing marsupial",
+            "used": false
         },
         {
             "word": "xenopus",
-            "clue": "A genus of aquatic frogs"
+            "clue": "A genus of aquatic frogs",
+            "used": false
         },
         {
             "word": "yak",
-            "clue": "A long-haired bovid"
+            "clue": "A long-haired bovid",
+            "used": false
         },
         {
             "word": "zebu",
-            "clue": "Cow with a hump"
+            "clue": "Cow with a hump",
+            "used": false
         },
         {
             "word": "antelope",
-            "clue": "They play on the range"
+            "clue": "They play on the range",
+            "used": false
         },
         {
             "word": "buffalo",
-            "clue": "A large bovid"
+            "clue": "A large bovid",
+            "used": false
         },
         {
             "word": "cheetah",
-            "clue": "Fast cat"
+            "clue": "Fast cat",
+            "used": false
         },
         {
             "word": "dingo",
-            "clue": "A wild dog that might eat babies"
+            "clue": "A wild dog that might eat babies",
+            "used": false
         },
         {
             "word": "flamingo",
-            "clue": "A pink bird"
+            "clue": "A pink bird",
+            "used": false
         },
         {
             "word": "gazelle",
-            "clue": "Graceful prey of lions"
+            "clue": "Graceful prey of lions",
+            "used": false
         },
         {
             "word": "hippopotamus",
-            "clue": "Most dangerous mammal"
+            "clue": "Most dangerous mammal",
+            "used": false
         }
         ,
         {
             "word": "ibex",
-            "clue": "A wild goat"
+            "clue": "A wild goat",
+            "used": false
         },
         {
             "word": "jackal",
-            "clue": "A wild dog"
+            "clue": "A wild dog",
+            "used": false
         },
         {
             "word": "llama",
-            "clue": "Make soft wool"
+            "clue": "Make soft wool",
+            "used": false
         },
         {
             "word": "mongoose",
-            "clue": "Enemy of the snake"
+            "clue": "Enemy of the snake",
+            "used": false
         },
         {
             "word": "ocelot",
-            "clue": "A small wild cat"
+            "clue": "A small wild cat",
+            "used": false
         },
         {
             "word": "puma",
-            "clue": "A cougar"
+            "clue": "A cougar",
+            "used": false
         },
         {
             "word": "reindeer",
-            "clue": "Arctic deer"
+            "clue": "Arctic deer",
+            "used": false
         },
         {
             "word": "sloth",
-            "clue": "A slow-moving mammal"
+            "clue": "A slow-moving mammal",
+            "used": false
         },
         {
             "word": "tapir",
-            "clue": "A mammal with a short trunk"
+            "clue": "A mammal with a short trunk",
+            "used": false
         },
         {
             "word": "urial",
-            "clue": "A wild sheep"
+            "clue": "A wild sheep",
+            "used": false
         },
         {
             "word": "vicuna",
-            "clue": "South American camels"
+            "clue": "South American camels",
+            "used": false
         },
         {
             "word": "wolverine",
-            "clue": "Ornery superhero"
+            "clue": "Ornery superhero",
+            "used": false
         },
         {
             "word": "xerus",
-            "clue": "Ground squirrels"
+            "clue": "Ground squirrels",
+            "used": false
         },
         {
             "word": "yellowjacket",
-            "clue": "A hunting wasp"
+            "clue": "A hunting wasp",
+            "used": false
         },
         {
             "word": "zorilla",
-            "clue": "A striped polecat"
+            "clue": "A striped polecat",
+            "used": false
         },
         {
             "word": "alpaca",
-            "clue": "Spitting animal"
+            "clue": "Spitting animal",
+            "used": false
         },
         {
             "word": "bison",
-            "clue": "Run off cliffs in Canada"
+            "clue": "Run off cliffs in Canada",
+            "used": false
         },
         {
             "word": "chimpanzee",
-            "clue": "A great ape"
+            "clue": "A great ape",
+            "used": false
         },
         {
             "word": "dugong",
-            "clue": "A sea cow"
+            "clue": "A sea cow",
+            "used": false
         },
         {
             "word": "echidna",
-            "clue": "A spiny critter"
+            "clue": "A spiny critter",
+            "used": false
         },
         {
             "word": "fennec",
-            "clue": "A desert fox"
+            "clue": "A desert fox",
+            "used": false
         },
         {
             "word": "gecko",
-            "clue": "Always sticks around"
+            "clue": "Always sticks around",
+            "used": false
         },
         {
             "word": "hyena",
-            "clue": "A laughing animal"
+            "clue": "A laughing animal",
+            "used": false
         },
         {
             "word": "ibis",
-            "clue": "Egyptian bird"
+            "clue": "Egyptian bird",
+            "used": false
         },
         {
             "word": "jaguar",
-            "clue": "A wild American cat"
+            "clue": "A wild American cat",
+            "used": false
         },
         {
             "word": "kudu",
-            "clue": "A large antelope"
+            "clue": "A large antelope",
+            "used": false
         },
         {
             "word": "astronaut",
-            "clue": "Travels in space"
+            "clue": "Travels in space",
+            "used": false
         },
         {
             "word": "bridge",
-            "clue": "Spans a physical obstacle"
+            "clue": "Spans a physical obstacle",
+            "used": false
         },
         {
             "word": "castle",
-            "clue": "A fortified building"
+            "clue": "A fortified building",
+            "used": false
         },
         {
             "word": "desert",
-            "clue": "Dry area"
+            "clue": "Dry area",
+            "used": false
         },
         {
             "word": "engine",
-            "clue": "Brought on the Industrial Age"
+            "clue": "Brought on the Industrial Age",
+            "used": false
         },
         {
             "word": "fountain",
-            "clue": "Spits water into the air"
+            "clue": "Spits water into the air",
+            "used": false
         },
         {
             "word": "garden",
-            "clue": "Gnome home"
+            "clue": "Gnome home",
+            "used": false
         },
         {
             "word": "hospital",
-            "clue": "A place where sick or injured people are treated"
+            "clue": "A place where sick or injured people are treated",
+            "used": false
         },
         {
             "word": "lighthouse",
-            "clue": "A tower with a light to guide ships"
+            "clue": "A tower with a light to guide ships",
+            "used": false
         },
         {
             "word": "observatory",
-            "clue": "A building equipped for observing celestial events"
+            "clue": "A building equipped for observing celestial events",
+            "used": false
         },
         {
             "word": "quarry",
-            "clue": "A place where stone or minerals are extracted"
+            "clue": "A place where stone or minerals are extracted",
+            "used": false
         },
         {
             "word": "river",
-            "clue": "A large natural stream of water flowing in a channel"
+            "clue": "A large natural stream of water flowing in a channel",
+            "used": false
         },
         {
             "word": "stadium",
-            "clue": "A large structure for sports or entertainment events"
+            "clue": "A large structure for sports or entertainment events",
+            "used": false
         },
         {
             "word": "temple",
-            "clue": "A building devoted to worship"
+            "clue": "A building devoted to worship",
+            "used": false
         },
         {
             "word": "university",
-            "clue": "An institution of higher education and research"
+            "clue": "An institution of higher education and research",
+            "used": false
         },
         {
             "word": "yacht",
-            "clue": "A medium-sized sailboat"
+            "clue": "A medium-sized sailboat",
+            "used": false
         },
         {
             "word": "zeppelin",
-            "clue": "A large airship"
+            "clue": "A large airship",
+            "used": false
         }
         ,
         {
             "word": "an",
-            "clue": "A short article"
+            "clue": "A short article",
+            "used": false
         },
         {
             "word": "be",
-            "clue": "To exist"
+            "clue": "To exist",
+            "used": false
         },
         {
             "word": "do",
-            "clue": "To perform an action"
+            "clue": "To perform an action",
+            "used": false
         },
         {
             "word": "go",
-            "clue": "To move from one place to another"
+            "clue": "To move from one place to another",
+            "used": false
         },
         {
             "word": "if",
-            "clue": "A conditional word"
+            "clue": "A conditional word",
+            "used": false
         },
         {
             "word": "it",
-            "clue": "A pronoun for a thing"
+            "clue": "A pronoun for a thing",
+            "used": false
         },
         {
             "word": "me",
-            "clue": "A pronoun for oneself"
+            "clue": "A pronoun for oneself",
+            "used": false
         },
         {
             "word": "no",
-            "clue": "A negative response"
+            "clue": "A negative response",
+            "used": false
         },
         {
             "word": "on",
-            "clue": "A preposition indicating position"
+            "clue": "A preposition indicating position",
+            "used": false
         },
         {
             "word": "up",
-            "clue": "A direction opposite to down"
+            "clue": "A direction opposite to down",
+            "used": false
         }
-    ]
-}
+    ];
+
+

@@ -13,7 +13,8 @@ const NOBESTTIME = Symbol('NOBESTTIME', {constant: true});         /* no saved b
 const NUMWORDS = 4;             /* number of words to attempt to generate from our word list */
 const MAXWIDTH = 12;                              /* width of the puzzle in character spaces */
 const MAXHEIGHT = 12;                           /* height of the puzzle in characters spaces */
-const BLANKARRAYCONST = { referenceNumber: 0, assignedLetter: NOLETTER };
+const ACROSS = true;                /* constant to set the initial direction as binary value */ 
+const BLANKARRAYCONST = { referenceNumber: 0, assignedLetter: NOLETTER }; 
 
 // Global Variables
 
@@ -25,45 +26,149 @@ const cluesDown = [];
 
 function createNewPuzzle() {
 
+    // local variables
+
+    let currentWordLocation = { across: 0, down: 0 }; /* location we are working from on board */ 
+    let currentDirection = ACROSS;           /* direction we are looking at for word placement */
+    let currentWordNumber = 1;   /* when placing a word on an unnumbered space use this and ++ */
+
     // Main function for puzzle creation 
+
+    // Start with a fresh puzzle array
 
     for( let i = 0; i < MAXHEIGHT; i++ ){
         for( let j = 0; j <  MAXWIDTH; j++) {
             solvedPuzzle [i,j] = BLANKARRAYCONST;
-
-            console.log( "writing to " + i + " " + j );
         }
     }
 
-    for ( let i = 0; i < NUMWORDS; i++ ){
+    let puzzleFull = false;
+    let wordsToPlace = NUMWORDS;
 
-        // grab and place a word 
+    while ( (wordsToPlace > 0) && !puzzleFull ){
 
-        // grab a random word that could potentially fit if there 
-        // are no words that could potentially fit then move to the next
-        // space.  
+        let wordPlaced = false; 
+        let spacesAvailable = 0;    
 
-        // try to fit it in the current location mapping it onto the 
-        // solved puzzle array. 
+        // determine how big a space we are working with
+        
+        do {
+            spacesAvailable = (currentDirection ? MAXWIDTH : MAXHEIGHT) - 
+                (currentDirection ? currentWordLocation.across : currentWordLocation.down);
 
-        // if it fits add it to the array 
+            // find a new starting point on the puzzle 
 
-        // add the clue to the clue list 
+            if (spacesAvailable < 1) {
 
-        // change the directionality 
+                // moving around we skip two so that we do not have to worry about bunched words 
 
-        // record that this word should not be chosen again 
+                currentDirection ? currentWordLocation.down += 2 : currentWordLocation.across +=2; 
+                
+                if ( currentWordLocation.across > (MAXWIDTH - 2) ) {
+                    currentWordLocation.across = 0;
+                    currentWordLocation.down +=2;
+                }
 
-        // else go back to grab another word (while test)
+                if ( currentWordLocation.down > MAXHEIGHT ) !puzzleFull;
+            }
 
+console.log(puzzleFull);
 
+        } while ((spacesAvailable < 1) && !(puzzleFull));
+
+console.log( spacesAvailable + " spaces to work with");
+
+        while ( !(wordPlaced) || !(puzzleFull)) {
+
+            // grab a random word 
+
+            let candidateIndex = Math.floor (Math.random() * wordList.length );
+
+console.log("trying " + wordList[candidateIndex].word );
+
+            // see if it fits in size 
+
+            if ( wordList[candidateIndex].word.length <= spacesAvailable ) {
+
+            // see if it matches what is possibly there already 
+
+                let puzzleSpot = [];
+                let across = currentWordLocation.across;
+                let down = currentWordLocation.down;
+
+                for ( let i = 0; i < wordList[candidateIndex].word.length; i++ ){
+
+                    puzzleSpot[i] = solvedPuzzle[across, down];
+                    (currentDirection) ? across++ : down++;
+
+                }
+
+                if ( wordPlacementChecker(puzzleSpot, wordList[candidateIndex].word)){
+
+                    // add a number to the solvedPuzzle location if none present,
+                    // place word on the solved puzzle 
+
+                    let across = currentWordLocation.across;
+                    let down = currentWordLocation.down;
+
+                    if (solvedPuzzle[across, down].referenceNumber == 0) {
+                        solvedPuzzle[across, down].referenceNumber = currentWordNumber;
+                    }
+
+                    for ( let i = 0; i < wordList[candidateIndex].word.length; i++ ){
+
+                        solvedPuzzle[across, down].assignedLetter = wordList[candidateIndex].word[i];
+                        (currentDirection) ? across++ : down++;
+
+                    }
+
+                    // mark the word used
+                    
+                    wordList[candidateIndex].used = true;
+
+                    // record the clue and then change the direction
+
+                    (currentDirection) ? 
+                        cluesAcross.push(solvedPuzzle[currentWordLocation.across,currentWordLocation.down].referenceNumber 
+                            + ". " + wordList[candidateIndex].clue) : 
+                        cluesDown.push(solvedPuzzle[currentWordLocation.across,currentWordLocation.down].referenceNumber 
+                            + ". " + wordList[candidateIndex].clue);
+                    
+                    currentDirection = !currentDirection;
+
+                }
+
+            }
+
+        }
+        
     }
 
 
 }
 
-function addWord() {
+function wordPlacementChecker ( puzzleSpace, word2 ) {
 
+    // function compares a string 
+    // to the target space on the puzzle.
+    // returns true if the word will fit. 
+
+THIS IS FAILING!!!
+
+    let wordWorks = true;
+
+    for ( let i = 0; i < word2.length; i++ ){
+
+    // look for an invalid letter placement 
+
+        if ( puzzleSpace[i].assignedLetter !== NOLETTER ){
+console.log ( "matching" + puzzleSpace[i].assignedLetter + "with" + word2[i] );
+            if ( puzzleSpace[i].assignedLetter !== word2[i] ) wordWorks = false;
+        }
+    }
+
+    console.log ( wordWorks );
+    return wordWorks;
 }
 
 
