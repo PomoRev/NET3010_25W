@@ -42,10 +42,12 @@ function createNewPuzzle() {
         }
     }
 
+    // set conditions (flags) to help place words on the puzzle 
+
     let puzzleFull = false;
     let wordsToPlace = NUMWORDS;
 
-    while ( (wordsToPlace > 0) || !puzzleFull ){
+    while ( (wordsToPlace > 0) && !puzzleFull ){
 
         let wordPlaced = false; 
         let spacesAvailable = 0;    
@@ -54,19 +56,16 @@ function createNewPuzzle() {
         
         do {
 
-console.log( " in loop ");
-
             spacesAvailable = (currentDirection ? MAXWIDTH : MAXHEIGHT) - 
                 (currentDirection ? currentWordLocation.across : 
                     currentWordLocation.down);
-
-console.log( " spaces available = " + spacesAvailable );
 
             // find a new starting point on the puzzle 
 
             if (spacesAvailable < 1) {
 
-                // moving around we skip two so that we do not have to worry about bunched words 
+            // moving around we skip two(2) so that we do not have to worry 
+            // about bunched words 
 
                 currentDirection ? currentWordLocation.down += 2 : 
                     currentWordLocation.across +=2; 
@@ -81,7 +80,7 @@ console.log( " spaces available = " + spacesAvailable );
 
         } while ((spacesAvailable < 1) && !(puzzleFull));
 
-        while ( !(wordPlaced) || !(puzzleFull)) {
+        while ( !(wordPlaced) && !(puzzleFull)) {
 
             // grab a random word 
 
@@ -91,20 +90,46 @@ console.log( " spaces available = " + spacesAvailable );
 
             if ( wordList[candidateIndex].word.length <= spacesAvailable ) {
 
+console.log( "how long? " + wordList[candidateIndex].word.length );
+
             // see if it matches what is possibly there already 
+
+// 1. if there is a word there already see if one of the letters in that word
+// match the new word's first letter. 
+
+// 2. starting from that first match see if there is enough room for the new 
+// word on the puzzle. 
+
+// 3. grab a string of the place where the word will go to make sure our 
+// word will map onto the puzzle in that position. 
+
+// 4. if it will map, insert the word and change the direction before finding 
+// a new word to place. 
+
+
+
 
                 let puzzleSpot = "";
                 let across = currentWordLocation.across;
                 let down = currentWordLocation.down;
 
+            // build a string from the current state of solvedPuzzle for comparing 
+
                 for ( let i = 0; i < wordList[candidateIndex].word.length; i++ ){
 
-                    puzzleSpot[i] = solvedPuzzle[across, down];
+console.log( "what is this at first: " + solvedPuzzle[across, down].assignedLetter  );
+
+                    puzzleSpot += solvedPuzzle[across, down].assignedLetter;
+
+console.log( "what is this undefined: " + puzzleSpot[i]  );
+
                     (currentDirection) ? across++ : down++;
 
                 }
 
-                if ( wordPlacementChecker(puzzleSpot, wordList[candidateIndex].word)){
+console.log( "left with " + puzzleSpot );
+
+                if ( wordPlacementChecker(puzzleSpot, wordList[candidateIndex].word) ){
 
                     // add a number to the solvedPuzzle location if none present,
                     // place word on the solved puzzle 
@@ -113,12 +138,13 @@ console.log( " spaces available = " + spacesAvailable );
                     let down = currentWordLocation.down;
 
                     if (solvedPuzzle[across, down].referenceNumber == 0) {
-                        solvedPuzzle[across, down].referenceNumber = currentWordNumber;
+                        solvedPuzzle[across, down].referenceNumber = currentWordNumber++;
                     }
 
                     for ( let i = 0; i < wordList[candidateIndex].word.length; i++ ){
 
-                        solvedPuzzle[across, down].assignedLetter = wordList[candidateIndex].word[i];
+                        solvedPuzzle[across, down].assignedLetter = 
+                            wordList[candidateIndex].word[i];
                         (currentDirection) ? across++ : down++;
 
                     }
@@ -126,26 +152,24 @@ console.log( " spaces available = " + spacesAvailable );
                     // mark the word used
                     
                     wordList[candidateIndex].used = true;
-                    wordPlaced--;
+                    wordsToPlace--;
 
                     // record the clue and then change the direction
 
                     (currentDirection) ? 
-                        cluesAcross.push(solvedPuzzle[currentWordLocation.across,currentWordLocation.down].referenceNumber 
+                        cluesAcross.push(
+                            solvedPuzzle[currentWordLocation.across, 
+                            currentWordLocation.down].referenceNumber 
                             + ". " + wordList[candidateIndex].clue) : 
-                        cluesDown.push(solvedPuzzle[currentWordLocation.across,currentWordLocation.down].referenceNumber 
+                            cluesDown.push(solvedPuzzle[currentWordLocation.across,
+                            currentWordLocation.down].referenceNumber 
                             + ". " + wordList[candidateIndex].clue);
                     
-                    currentDirection = !currentDirection;
-
+                    currentDirection = !currentDirection; 
                 }
-
             }
-
-        }
-        
+        }      
     } 
-
 }
 
 function wordPlacementChecker ( puzzleSpace, word2 ) {
@@ -155,9 +179,8 @@ function wordPlacementChecker ( puzzleSpace, word2 ) {
     // returns true if the word will fit. 
 
     let wordWorks = true;
-    let tempWord = [];
 
-console.log("comparing " + word2 + " to " + tempWord );
+console.log("comparing " + word2 + " to " + puzzleSpace );
 
     for ( let i = 0; i < word2.length; i++ ){
 
@@ -165,11 +188,11 @@ console.log("comparing " + word2 + " to " + tempWord );
 
 // HERE IS THE PROBLEM TO FIX
 
-        if ( puzzleSpace[i].assignedLetter != '?' ){
+        if ( puzzleSpace[i] != '?' ){
 
-console.log ( "matching[" + puzzleSpace[i].assignedLetter + "]with[" + word2[i] + "]" );
+console.log ( "matching[" + puzzleSpace[i] + "]with[" + word2[i] + "]" );
   
-            if ( puzzleSpace[i].assignedLetter != word2[i] ) wordWorks = false;
+            if ( puzzleSpace[i] != word2[i] ) wordWorks = false;
         }
     }
 
