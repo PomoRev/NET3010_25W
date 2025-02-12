@@ -21,6 +21,7 @@ const BLANKARRAYCONST = { referenceNumber: 0, assignedLetter: '?' };
 const solvedPuzzle = [];
 const cluesAcross = [];
 const cluesDown = [];
+let currentWordNumber = 0;
 
 // Puzzle Generation Functions
 
@@ -30,7 +31,8 @@ function createNewPuzzle() {
 
     let currentWordLocation = { across: 0, down: 0 }; /* location we are working from on board */ 
     let currentDirection = ACROSS;           /* direction we are looking at for word placement */
-    let currentWordNumber = 1;   /* when placing a word on an unnumbered space use this and ++ */
+    
+
 
     // Main function for puzzle creation 
 
@@ -46,6 +48,7 @@ function createNewPuzzle() {
 
     let puzzleFull = false;
     let wordsToPlace = NUMWORDS;
+    currentWordNumber = 1;   
 
     while ( (wordsToPlace > 0) && !puzzleFull ){
 
@@ -64,8 +67,8 @@ function createNewPuzzle() {
 
             if (spacesAvailable < 1) {
 
-            // moving around we skip two(2) so that we do not have to worry 
-            // about bunched words 
+                // moving around we skip two(2) so that we do not  
+                // have to worry about bunched words 
 
                 currentDirection ? currentWordLocation.down += 2 : 
                     currentWordLocation.across +=2; 
@@ -80,36 +83,59 @@ function createNewPuzzle() {
 
         } while ((spacesAvailable < 1) && !(puzzleFull));
 
+        // loop until puzzle is full or all the words are words are placed 
+
         while ( !(wordPlaced) && !(puzzleFull)) {
 
-            // grab a random word 
+            // grab a random word that has not been used already
 
             let candidateIndex = Math.floor (Math.random() * wordList.length );
+
+            while ( wordList[candidateIndex].used == true )
+                candidateIndex = Math.floor (Math.random() * wordList.length );
+
+console.log ("and the word is [" + wordList[candidateIndex].word + "].");
 
             // see if it fits in size 
 
             if ( wordList[candidateIndex].word.length <= spacesAvailable ) {
 
-console.log( "how long? " + wordList[candidateIndex].word.length );
+                // see if it matches what is possibly there already
 
-            // see if it matches what is possibly there already 
+                if (solvedPuzzle[currentWordLocation.across, 
+                    currentWordLocation.down].assignedLetter != '?'){
 
-// 1. if there is a word there already see if one of the letters in that word
-// match the new word's first letter. 
+                    let indexOffset = 0;
+                    let tempAcross = currentWordLocation.across;
+                    let tempDown = currentWordLocation.down;
 
-// 2. starting from that first match see if there is enough room for the new 
-// word on the puzzle. 
+                    while ( (indexOffset < wordList[candidateIndex].word.length) 
+                        && (wordList[candidateIndex].word[indexOffset] == 
+                        solvedPuzzle[tempAcross, tempDown].assignedLetter) ) {
+                            
+                        indexOffset++;
+                        currentDirection ? tempAcross++ : tempDown++;
+                
+                    }
 
-// 3. grab a string of the place where the word will go to make sure our 
-// word will map onto the puzzle in that position. 
+                    if (indexOffset < wordList[candidateIndex].word.length ){
 
-// 4. if it will map, insert the word and change the direction before finding 
-// a new word to place. 
+                        recordClue(wordList[candidateIndex].clue);
+                        placeWord(wordList[candidateIndex].word, currentWordLocation);
+                        wordList[candidateIndex].used = true;
+                        wordsToPlace--;
 
+                    }
+                } else {
 
+                    recordClue(wordList[candidateIndex].clue, currentDirection);
+                    placeWord(wordList[candidateIndex].word, currentWordLocation, currentDirection);
+                    wordList[candidateIndex].used = true;
+                    wordsToPlace--;
 
+                }
 
-                let puzzleSpot = "";
+                /* let puzzleSpot = "";
                 let across = currentWordLocation.across;
                 let down = currentWordLocation.down;
 
@@ -152,7 +178,7 @@ console.log( "left with " + puzzleSpot );
                     // mark the word used
                     
                     wordList[candidateIndex].used = true;
-                    wordsToPlace--;
+                    wordsToPlace--; */
 
                     // record the clue and then change the direction
 
@@ -166,11 +192,11 @@ console.log( "left with " + puzzleSpot );
                             + ". " + wordList[candidateIndex].clue);
                     
                     currentDirection = !currentDirection; 
-                }
             }
-        }      
-    } 
-}
+        }
+    }      
+} 
+
 
 function wordPlacementChecker ( puzzleSpace, word2 ) {
 
@@ -186,8 +212,6 @@ console.log("comparing " + word2 + " to " + puzzleSpace );
 
     // look for an invalid letter placement 
 
-// HERE IS THE PROBLEM TO FIX
-
         if ( puzzleSpace[i] != '?' ){
 
 console.log ( "matching[" + puzzleSpace[i] + "]with[" + word2[i] + "]" );
@@ -200,6 +224,31 @@ console.log ( "matching[" + puzzleSpace[i] + "]with[" + word2[i] + "]" );
     return wordWorks;
 }
 
+function recordClue (clue, direction){
+
+    clue = currentWordNumber + clue;
+
+    direction ? cluesAcross.push(clue) : cluesDown.push(clue);
+
+}
+
+function placeWord ( wordString, location, direction ){
+
+    // takes a word and places it on the solved Puzzle 
+
+    if (solvedPuzzle[location.across, location.down].referenceNumber == 0) {
+        solvedPuzzle[location.across, location.down].referenceNumber = currentWordNumber++;
+    }
+
+    for ( let i = 0; i < wordString.length; i++ ){
+
+        solvedPuzzle[location.across, location.down].assignedLetter = 
+            wordString[i];
+        (direction) ? location.across++ : location.down++;
+
+    }
+}
+
 
 // Puzzle Display Functions
 
@@ -208,6 +257,8 @@ function displayClues() {
 }
 
 function displayPuzzle() {
+
+    // Build to see what is happening. 
 
 
 }
