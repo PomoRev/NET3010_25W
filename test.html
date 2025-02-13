@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Prof. Frank Emanuel">
+    <meta name="email" content="emanuef@algonquincollege.com">
+    <meta name="date" content="2025-02-13">
+    <script src="word_data.js"></script>
+    <style>
+        body {
+
+            background-color: brown;
+
+        }
+
+        header {
+
+            font-size: 24pt;
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+        table {
+            margin: 10px auto;
+            padding: 10p;
+            border: solid blue 3px;
+        }
+
+        td {
+
+            width: 14pt;
+            height: 14pt;
+
+            text-align: center;
+
+            font-size: 12pt;
+            background-color: azure;
+            color: black;
+
+        }
+    </style>
+    <title>Crossword Building Quiz</title>
+</head>
+<body>
+    <header>Crossword Building Quiz</header>
+
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+
+<script>
+
+    const displayTable = document.getElementsByTagName("td");
+    const puzzleSolution = [];
+
+    let startingAcross = 0;
+    let startingDown = 0;
+    let wordIndex = 0;
+
+    function displayPuzzle(){
+
+        let offset = 0;
+
+        for( let down = 0; down < 10; down++ ){
+            for( let across = 0; across <  10; across++) {
+
+                console.log( "placing [" + down + "," + across + "] in offset " + offset);
+                displayTable[offset++].innerText = puzzleSolution[down][across];
+
+            }
+        }  
+
+    }
+
+    for( let down = 0; down < 10; down++ ){
+        puzzleSolution[down] = [];
+        for( let across = 0; across <  10; across++) {
+            puzzleSolution[down][across] = "?";
+        }
+    }
+
+    do {
+        
+        wordIndex = Math.floor (Math.random() * wordList.length );
+
+    } while ( wordList[wordIndex].used == true );
+
+    console.log( "word is " + wordList[wordIndex].word );
+
+    for (let i = 0; i < wordList[wordIndex].word.length; i++){
+
+        console.log( "putting [" + wordList[wordIndex].word[i] + "] in " 
+            + startingDown + "," + (startingAcross + i) );
+
+        puzzleSolution[startingDown][startingAcross + i] = wordList[wordIndex].word[i];
+
+    }
+
+    displayPuzzle();
+
+    
+</script>
+
+</html>
