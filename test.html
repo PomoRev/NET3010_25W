@@ -174,10 +174,12 @@
 
     const displayTable = document.getElementsByTagName("td");
     const puzzleSolution = [];
+    const wordsToPlot = 2;
 
     let startingAcross = 0;
     let startingDown = 0;
     let wordIndex = 0;
+    let acrossDirection = true;
 
     function displayPuzzle(){
 
@@ -205,7 +207,7 @@
         
         wordIndex = Math.floor (Math.random() * wordList.length );
 
-    } while ( wordList[wordIndex].used == true );
+    } while ((wordList[wordIndex].used == true) || (wordList[wordIndex].word.length > 10));
 
     console.log( "word is " + wordList[wordIndex].word );
 
@@ -219,6 +221,13 @@
     }
 
     displayPuzzle();
+
+    while ()
+
+    acrossDirection = !acrossDirection;
+
+
+
 
     
 </script>
