@@ -22,6 +22,7 @@ let cluesAcross = "";
 let cluesDown = "";
 let currentWordNumber = 1;
 
+let currentWordLocation = { across: 0, down: 0 }; 
 
 // Puzzle Generation Functions
 
@@ -29,7 +30,7 @@ function createNewPuzzle() {
 
     // local variables
 
-    let currentWordLocation = { across: 0, down: 0 }; 
+
     let currentDirection = ACROSS;
 
     // Main function for puzzle creation 
@@ -49,6 +50,7 @@ function createNewPuzzle() {
     currentWordNumber = 1;   
 
     while ((wordsToPlace > 0) && !puzzleFull ){
+
 console.log("next iteration");
 
         // determine how much space is available 
@@ -74,6 +76,7 @@ console.log("grabbing a word");
 
             do{
 
+                // add a bailing condition for exhausting the list 
                 wordIndex = Math.floor (Math.random() * wordList.length );
 
             } while ((wordList[wordIndex].word.length > spacesAvailable) &&
@@ -87,8 +90,9 @@ console.log("got a word = " + wordList[wordIndex].word);
                 placeWord( wordList[wordIndex].word, currentWordLocation, currentDirection );
                 wordsToPlace--;
                 wordList[wordIndex].used = true;
-                currentDirection ? currentWordLocation.across++ : currentWordLocation.down += 2;
                 currentDirection = !currentDirection;
+                currentDirection ? currentWordLocation.across++ : currentWordLocation.down++;
+
 
                 displayClues();
                 displayPuzzle();
@@ -135,6 +139,7 @@ console.log("test string from existing puzzle = " + testString);
         if ( testString[i] != '?' ){
   
             if ( testString[i] != word[i] ) wordWorks = false;
+
         }
     }
 console.log("does it fit? " + wordWorks);
@@ -156,13 +161,20 @@ function placeWord ( word, location, direction ){
         solvedPuzzle[location.across][location.down].referenceNumber = currentWordNumber++;
     }
 
+    let across = location.across;
+    let down = location.down;
+
     for ( let i = 0; i < word.length; i++ ){
 
-console.log("plotting " + word[i] + " onto " + solvedPuzzle[location.across][location.down].assignedLetter);
+console.log("plotting " + word[i] + " onto " 
+    + solvedPuzzle[across][down].assignedLetter);
         
-        solvedPuzzle[location.across][location.down].assignedLetter = word[i];
+        solvedPuzzle[across][down].assignedLetter = word[i];
 
-        (direction) ? location.across++ : location.down++;
+        (direction) ? across++ : down++;
+
+console.log("local across,down = " + across + "," + down);
+console.log("global across,down = " + currentWordLocation.across + "," + currentWordLocation.down);
 
     }
 
