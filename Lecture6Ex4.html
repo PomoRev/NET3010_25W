@@ -14,14 +14,19 @@
 			var currentImage = 0;
 			cycle();		
 
+			
+
 			// cycle through the images
 			function cycle(){
+
+				console.log( "cycling... " + currentImage);
+
 				let pics = document.getElementsByClassName("monkey");
 				for (pic of pics){
 					pic.style.display = "none";
 				}
 					
-				if (currentImage == pics.length){
+				if (currentImage >= pics.length){
 					currentImage = 0; 
 				}
 				
@@ -29,8 +34,8 @@
 
 
 				setTimeout( cycle, 4000);
-			}
-						
+
+			}	
 		</SCRIPT>
 	</BODY>
 </HTML>
