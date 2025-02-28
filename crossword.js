@@ -42,7 +42,7 @@ function createNewPuzzle() {
             () => ({referenceNumber: 0, assignedLetter: '?'}));
     }
 
-displayPuzzle( solvedPuzzle ); // for troubleshooting purposes only
+// displayPuzzle( solvedPuzzle ); // for troubleshooting purposes only
 
     // set conditions (flags) to help place words on the puzzle 
 
@@ -116,7 +116,7 @@ displayPuzzle( solvedPuzzle ); // for troubleshooting purposes only
 
                 currentDirection = !currentDirection;
                 displayClues();
-                displayPuzzle(solvedPuzzle);
+                displayPuzzle(guessedPuzzle);
 
             } else {
 
@@ -128,6 +128,19 @@ displayPuzzle( solvedPuzzle ); // for troubleshooting purposes only
             }
         }
     }
+
+    for (let i = 0; i < MAXHEIGHT; i++){
+
+        for(let ii = 0; ii < MAXWIDTH; ii++){
+
+            if (solvedPuzzle[ii][i].assignedLetter != '?') 
+                guessedPuzzle[ii][i].assignedLetter = " ";
+            guessedPuzzle[ii][i].referenceNumber = solvedPuzzle[ii][i].referenceNumber;
+
+        }
+    }
+    
+    displayPuzzle( guessedPuzzle );
 }
    
 
@@ -235,7 +248,7 @@ function displayPuzzle( puzzleData ) {
                 puzzleSquares[index].style.backgroundColor = "white";
             }
             else{
-                puzzleSquares[index].style.borederColor = "white";
+                puzzleSquares[index].style.borderColor = "black";
                 puzzleSquares[index].style.backgroundColor = "black";
             }
 
@@ -254,6 +267,30 @@ function displayTime() {
 
 
 // Puzzle Solving Gameplay Functions
+
+function makeClickable() {
+
+    // NB: requires a clicked reference as a global variable (current offset)
+    // NB: need to reset the keyboard listener when word end encountered
+
+    // 1) creates a listener on a cell which can return its content and number 
+    //    listener also contains the data for the offset in the puzzle array 
+
+    // when invoked
+    
+    // 1) if clicked is set (check to see if we can toggle direction)
+            
+    // 2) set clicked to offset
+
+    // 3) reset puzzle display to guessedPuzzle so that highligthing goes away
+
+    // 4) if no direction set determine direction of word chosen. 
+
+    // 5) highlight the word boxes. 
+    // 6) highlight first box as starting letter 
+    // 7) turn on keyboard listerner
+
+}
 
 function isWon() {
 
