@@ -183,7 +183,7 @@ function numWordsLeft() {
 
 function recordClue (clue, direction){
 
-    clue = currentWordNumber + ". " + clue + "<br>";
+    clue = currentWordNumber + ". " + clue + "<br><br>";
     direction ? cluesAcross += clue : cluesDown += clue;
 
 }
