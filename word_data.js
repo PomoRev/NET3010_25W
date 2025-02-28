@@ -1239,7 +1239,7 @@ const wordList = [
             "clue": "A large airship",
             "used": false
         }
-        ,
+/*         ,
         {
             "word": "an",
             "clue": "A short article",
@@ -1289,7 +1289,7 @@ const wordList = [
             "word": "up",
             "clue": "A direction opposite to down",
             "used": false
-        }
+        } */
     ];
 
 

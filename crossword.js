@@ -10,7 +10,7 @@
 const NOLETTER = '?';                                           /* character for an empty square */
 const NONUMBER = 0; /* token for a square that has no number to indicate the start of a word */
 const NOBESTTIME = Symbol('NOBESTTIME', {constant: true});         /* no saved best time yet */
-const NUMWORDS = 2;             /* number of words to attempt to generate from our word list */
+const NUMWORDS = 8;             /* number of words to attempt to generate from our word list */
 const MAXWIDTH = 12;                              /* width of the puzzle in character spaces */
 const MAXHEIGHT = 12;                           /* height of the puzzle in characters spaces */
 const ACROSS = true;                /* constant to set the initial direction as binary value */ 
@@ -18,9 +18,11 @@ const ACROSS = true;                /* constant to set the initial direction as 
 // Global Variables
 
 const solvedPuzzle = Array(MAXHEIGHT);
+const guessedPuzzle = Array(MAXHEIGHT);
 let cluesAcross = "";
 let cluesDown = "";
 let currentWordNumber = 1;
+let currentDirection = ACROSS;
 
 let currentWordLocation = { across: 0, down: 0 }; 
 
@@ -28,20 +30,19 @@ let currentWordLocation = { across: 0, down: 0 };
 
 function createNewPuzzle() {
 
-    // local variables
-
-
-    let currentDirection = ACROSS;
-
     // Main function for puzzle creation 
     // Start with a fresh puzzle array (using a mapping function)
+    // Also build an array for the working puzzle map which will be set 
+    // by the puzzle array when it is completed
 
     for (let i = 0; i < MAXHEIGHT; i++ ){
         solvedPuzzle[i] = Array.from({ length: MAXWIDTH }, 
             () => ({ referenceNumber: 0, assignedLetter: '?' }));
+        guessedPuzzle[i] = Array.from({length: MAXWIDTH},
+            () => ({referenceNumber: 0, assignedLetter: '?'}));
     }
 
-    displayPuzzle();
+displayPuzzle( solvedPuzzle ); // for troubleshooting purposes only
 
     // set conditions (flags) to help place words on the puzzle 
 
@@ -51,51 +52,78 @@ function createNewPuzzle() {
 
     while ((wordsToPlace > 0) && !puzzleFull ){
 
-console.log("next iteration");
-
         // determine how much space is available 
 
         let spacesAvailable = (currentDirection ? MAXWIDTH : MAXHEIGHT) - 
             (currentDirection ? currentWordLocation.across : currentWordLocation.down);
 
+        // see if there is enough space on the puzzle for a word (more 
+        // than 2 spaces in either direction)
+
         if (spacesAvailable < 2) {
-console.log("changing direction");
+
             currentDirection = !currentDirection;
 
             spacesAvailable = (currentDirection ? MAXWIDTH : MAXHEIGHT) - 
                 (currentDirection ? currentWordLocation.across : currentWordLocation.down);
 
             if (spacesAvailable < 2) puzzleFull = true;
+
         }
 
-        if ((!puzzleFull) && (spacesAvailable > 2)){
+        if (!puzzleFull){
 
             // grab a word that fits in the space matching any existing characters 
-console.log("grabbing a word");
+
             let wordIndex = 0;
+            let numberWords = numWordsLeft();
 
             do{
 
-                // add a bailing condition for exhausting the list 
-                wordIndex = Math.floor (Math.random() * wordList.length );
+                // loop until you have a word that fits or run out of words 
 
-            } while ((wordList[wordIndex].word.length > spacesAvailable) &&
-                (wordList[wordIndex].used));
+                do{
 
-console.log("got a word = " + wordList[wordIndex].word);
+                    // add a bailing condition for exhausting the list 
+                    wordIndex = Math.floor (Math.random() * wordList.length );
 
-            if (wordTestFit(wordList[wordIndex].word, currentWordLocation, currentDirection)){
+                } while ((wordList[wordIndex].word.length > spacesAvailable) || wordList[wordIndex].used);
+
+            } while (!wordTestFit(wordList[wordIndex].word, currentWordLocation, currentDirection) 
+                        && (--numberWords > 0) );
+
+            if (numberWords > 0){
 
                 recordClue( wordList[wordIndex].clue, currentDirection );
                 placeWord( wordList[wordIndex].word, currentWordLocation, currentDirection );
                 wordsToPlace--;
                 wordList[wordIndex].used = true;
+
+                if (!currentDirection){ 
+
+                    // going across after going down - skip 2 
+
+                    currentWordLocation.down += 2;
+                    currentWordNumber++;
+
+                } else if (currentWordNumber > 1) {
+
+                    // otherwise skip 2 across after the first words are placed 
+
+                    currentWordLocation.across += 2;
+                    currentWordNumber++;
+                }
+
                 currentDirection = !currentDirection;
-                currentDirection ? currentWordLocation.across++ : currentWordLocation.down++;
-
-
                 displayClues();
-                displayPuzzle();
+                displayPuzzle(solvedPuzzle);
+
+            } else {
+
+                // move to a new location to check if there are no matches
+
+                currentDirection ? currentDirection.across++ : currentDirection.down += 2;
+                currentWordNumber++;
 
             }
         }
@@ -108,7 +136,6 @@ function wordTestFit ( word, startingLocation, direction ) {
     // function compares a string 
     // to the target space on the puzzle.
     // returns true if the word will fit. 
-console.log(" checking word [" + word + "] for a fit");
 
     let wordWorks = true;
 
@@ -121,18 +148,16 @@ console.log(" checking word [" + word + "] for a fit");
         // test plotting a word across 
 
         for (let i = 0; i < word.length; i++ )
-            testString += solvedPuzzle[startingLocation.down][startingLocation.across + i].assignedLetter;
+            testString += solvedPuzzle[startingLocation.across + i][startingLocation.down].assignedLetter;
 
     } else {
 
         // test plotting a word down 
 
         for (let i = 0; i < word.length; i++ )
-            testString += solvedPuzzle[startingLocation.down + i][startingLocation.across].assignedLetter;
+            testString += solvedPuzzle[startingLocation.across][startingLocation.down + i].assignedLetter;
 
     }
-
-console.log("test string from existing puzzle = " + testString);
 
     for (let i = 0; i < word.length; i++ ){
 
@@ -142,8 +167,18 @@ console.log("test string from existing puzzle = " + testString);
 
         }
     }
-console.log("does it fit? " + wordWorks);
+
     return wordWorks;
+}
+
+function numWordsLeft() {
+
+    let i = 0;
+    wordList.forEach( word => {
+        if ( !word.used ) i++;
+    });
+
+    return i;
 }
 
 function recordClue (clue, direction){
@@ -158,54 +193,54 @@ function placeWord ( word, location, direction ){
     // takes a word and places it on the solvedPuzzle array
 
     if (solvedPuzzle[location.across][location.down].referenceNumber == 0) {
-        solvedPuzzle[location.across][location.down].referenceNumber = currentWordNumber++;
+        solvedPuzzle[location.across][location.down].referenceNumber = currentWordNumber;
     }
 
     let across = location.across;
     let down = location.down;
 
     for ( let i = 0; i < word.length; i++ ){
-
-console.log("plotting " + word[i] + " onto " 
-    + solvedPuzzle[across][down].assignedLetter);
         
         solvedPuzzle[across][down].assignedLetter = word[i];
-
         (direction) ? across++ : down++;
-
-console.log("local across,down = " + across + "," + down);
-console.log("global across,down = " + currentWordLocation.across + "," + currentWordLocation.down);
 
     }
 
 }
 
-
 // Puzzle Display Functions
 
 function displayClues() {
 
-    document.getElementById("across").innerHTML = cluesAcross;
-    document.getElementById("down").innerHTML = cluesDown;
+    document.getElementsByClassName("acrossClues")[0].innerHTML = cluesAcross;
+    document.getElementsByClassName("downClues")[0].innerHTML = cluesDown;
 
 }
 
-function displayPuzzle() {
+function displayPuzzle( puzzleData ) {
 
-    // Build to see what is happening. 
+    // Build to see what is happening.
 
     let index = 0;
     const puzzleBoard = document.getElementsByClassName("letter");
     const puzzleNumbers = document.getElementsByClassName("number");
+    const puzzleSquares = document.querySelectorAll("#puzzle table tr td");
 
     for (let i = 0; i < MAXHEIGHT; i++ ){
         for (let j = 0; j < MAXWIDTH; j++ ){
 
-            if (solvedPuzzle[j][i].assignedLetter != '?')
-                puzzleBoard[index].innerText = solvedPuzzle[j][i].assignedLetter;
+            if (puzzleData[j][i].assignedLetter != '?'){
+                puzzleBoard[index].innerText = puzzleData[j][i].assignedLetter;
+                puzzleSquares[index].style.borderColor = "black";
+                puzzleSquares[index].style.backgroundColor = "white";
+            }
+            else{
+                puzzleSquares[index].style.borederColor = "white";
+                puzzleSquares[index].style.backgroundColor = "black";
+            }
 
-            if (solvedPuzzle[j][i].referenceNumber != 0)
-                puzzleNumbers[index].innerText = solvedPuzzle[j][i].referenceNumber;
+            if (puzzleData[j][i].referenceNumber != 0)
+                puzzleNumbers[index].innerText = puzzleData[j][i].referenceNumber;
 
             index++;
 

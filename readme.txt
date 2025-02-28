@@ -61,4 +61,23 @@ offline
   were identified in the datastructure work. 
 
 
+CLASS 5 & 6: Coding in JavaScript
+
+- demonstrated some of the troubleshooting techniques that are needed to
+  work with JavaScript, including creating a simplified section of code to 
+  quickly identify issues with populating the array
+
+offline
+
+- continued coding the puzzle generator
+- removed the 2 letter words, they will not be needed in this schema
+- fixed the generator so that it can build puzzles
+- next thing to do is to not display the solution and clean up the clue lists 
+
+CLASS 7: Coding in JavaScript and CSS
+
+
+
+
+
 
