@@ -7,15 +7,16 @@
 
 // Constants 
 
-const NOLETTER = '?';                                           /* character for an empty square */
+const NOLETTER = '?';                                       /* character for an empty square */
 const NONUMBER = 0; /* token for a square that has no number to indicate the start of a word */
 const NOBESTTIME = Symbol('NOBESTTIME', {constant: true});         /* no saved best time yet */
-const NUMWORDS = 8;             /* number of words to attempt to generate from our word list */
+const NUMWORDS = 11;            /* number of words to attempt to generate from our word list */
 const MAXWIDTH = 12;                              /* width of the puzzle in character spaces */
 const MAXHEIGHT = 12;                           /* height of the puzzle in characters spaces */
+const NOTCLICKED = -1;                    /* constant for no currently selected puzzle space */
 const ACROSS = true;                /* constant to set the initial direction as binary value */ 
 
-// Global Variables
+// Global Variables (Puzzle Building)
 
 const solvedPuzzle = Array(MAXHEIGHT);
 const guessedPuzzle = Array(MAXHEIGHT);
@@ -23,8 +24,13 @@ let cluesAcross = "";
 let cluesDown = "";
 let currentWordNumber = 1;
 let currentDirection = ACROSS;
-
 let currentWordLocation = { across: 0, down: 0 }; 
+
+// Global Variables (Puzzle Functionality)
+
+let currentClickedElement = NOTCLICKED;
+let timer = 0;
+let timerIntervalID = null;
 
 // Puzzle Generation Functions
 
@@ -33,16 +39,16 @@ function createNewPuzzle() {
     // Main function for puzzle creation 
     // Start with a fresh puzzle array (using a mapping function)
     // Also build an array for the working puzzle map which will be set 
-    // by the puzzle array when it is completed
+    // by the puzzle array when it is completed and each element will also 
+    // have the offset to the array of table cells
 
     for (let i = 0; i < MAXHEIGHT; i++ ){
+        let tdOffset = 0;
         solvedPuzzle[i] = Array.from({ length: MAXWIDTH }, 
             () => ({ referenceNumber: 0, assignedLetter: '?' }));
         guessedPuzzle[i] = Array.from({length: MAXWIDTH},
-            () => ({referenceNumber: 0, assignedLetter: '?'}));
+            () => ({referenceNumber: 0, assignedLetter: '?', tableOffset: tdOffset++}));
     }
-
-// displayPuzzle( solvedPuzzle ); // for troubleshooting purposes only
 
     // set conditions (flags) to help place words on the puzzle 
 
@@ -263,6 +269,27 @@ function displayPuzzle( puzzleData ) {
 
 function displayTime() {
 
+    // close enough to a seconds timer, starts where current timer left off
+
+    timerIntervalID = setInterval(() => {
+        let elapsedTime = timer++;
+        let hours = Math.floor(elapsedTime/3600);
+        if (hours < 10) hours = "0" + hours;
+        let minutes = Math.floor((elapsedTime % 3600)/60);
+        if (minutes < 10) minutes = "0" + minutes;
+        let seconds = Math.floor((elapsedTime % 3600) % 60);
+        if (seconds < 10) seconds = "0" + seconds;
+        document.getElementById("timer").innerText = hours + ":" + minutes + ":" + seconds;
+    }, 1000);
+
+}
+
+function stopTimer(){
+
+    // turns timer off
+
+    clearInterval(timerIntervalID);
+
 }
 
 
@@ -270,25 +297,66 @@ function displayTime() {
 
 function makeClickable() {
 
-    // NB: requires a clicked reference as a global variable (current offset)
-    // NB: need to reset the keyboard listener when word end encountered
+    const tableCells = document.getElementsByTagName('td');
 
-    // 1) creates a listener on a cell which can return its content and number 
-    //    listener also contains the data for the offset in the puzzle array 
+    // create a listener on each table cell that remembers the offset of the element 
+    // which can be used to find the corresponding data in the puzzle 
+    // arrays ([floor of i/MAXWIDTH][floor of i%MAXWIDTH])
 
-    // when invoked
-    
-    // 1) if clicked is set (check to see if we can toggle direction)
+    for (let i = 0; i < tableCells.length; i++) {
+
+        tableCells[i].onclick = (clickEvent) => {
+
+            // if currentClickedElement == i and the number is 0 then toggle the direction
+
+            // set the currentClicked Element
+
+            currentClickedElement = i;
+
+            // reset puzzle display to remove any previous highlighting
+
+            // determine direction of chosen word 
+
+            // highlight word box.
+            // highlight letter current letter box. 
             
-    // 2) set clicked to offset
+            console.log( i + "the clickening");
+        }
+    }
+}
 
-    // 3) reset puzzle display to guessedPuzzle so that highligthing goes away
+function turnOffClickable() {
 
-    // 4) if no direction set determine direction of word chosen. 
+    const tableCells = document.getElementsByTagName('td');
 
-    // 5) highlight the word boxes. 
-    // 6) highlight first box as starting letter 
-    // 7) turn on keyboard listerner
+    for (let i = 0; i < tableCells.length; i++) {
+
+        tableCells[i].onclick = null;
+
+    }
+
+    currentClickedElement = NOTCLICKED;
+
+}
+
+function takeKeyPress() {
+
+    document.onkeydown = (keyEvent) => { 
+
+        if (currentClickedElement != NOTCLICKED){
+
+            // process key press based on type of element in 
+
+            console.log( keyEvent.key );
+
+        }
+    }
+
+}
+
+function turnOffKeyPress() {
+
+    document.onkeydown = null;
 
 }
 
@@ -305,4 +373,5 @@ function isWon() {
 // testing Code 
 
 createNewPuzzle();
+displayTime();
 

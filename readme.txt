@@ -76,6 +76,12 @@ offline
 
 CLASS 7: Coding in JavaScript and CSS
 
+- worked through the issues of making cells clickable, highlighting words, and 
+  capturing key presses. 
+
+offline
+
+- added a seconds timer and the ability to stop and start it as needed
 
 
 

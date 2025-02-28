@@ -44,6 +44,10 @@ header, #heading, footer {
 footer {
 
     border-bottom: 0;
+    padding-top: 10px;
+    text-align: center;
+    color: var(--fgcolour);
+    display: block;
 
 }
 
