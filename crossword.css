@@ -174,11 +174,11 @@ main {
 
 td {
 
-    border: solid 2px var(--fgcolour);
+    border: solid 2px black;
     height: 24pt;
     width: 24pt;
 
-    background-color: var(--fgcolour);
+    background-color: white;
     text-align: center;
 
 }
@@ -232,6 +232,30 @@ p {
     font-size: 14pt;
     color: var(--fgcolour);
 
+}
+
+.notused {
+
+    background-color: black;
+
+}
+
+.highlighted {
+
+    background-color: brown;
+
+}
+
+.blinking {
+
+    background-color: darkgrey;
+    animation: blinking 1.5s linear infinite;
+    
+
+} 
+
+@keyframes blinking {
+    50% { background-color: ivory;}
 }
 
 

@@ -82,6 +82,17 @@ CLASS 7: Coding in JavaScript and CSS
 offline
 
 - added a seconds timer and the ability to stop and start it as needed
+- reconfigured the display puzzle to use classes so that we can use classes 
+  and animations for selecting cells
+- added a function to reset the puzzle
+- built functionality for selecting a cell in the puzzle (only works on numbered cells)
+  but it will select the word, and in the case of the first word the second click will
+  change the direction to down
+
+TO DO: Keyboard input handling
+
+
+
 
 
 

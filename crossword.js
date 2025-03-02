@@ -15,6 +15,8 @@ const MAXWIDTH = 12;                              /* width of the puzzle in char
 const MAXHEIGHT = 12;                           /* height of the puzzle in characters spaces */
 const NOTCLICKED = -1;                    /* constant for no currently selected puzzle space */
 const ACROSS = true;                /* constant to set the initial direction as binary value */ 
+const DOWN = false;                       /* constant to for setting a direction to vertical */
+const NOCELLSELECTED = -1;           /* constant for no starting point for typing in letters */
 
 // Global Variables (Puzzle Building)
 
@@ -250,12 +252,10 @@ function displayPuzzle( puzzleData ) {
 
             if (puzzleData[j][i].assignedLetter != '?'){
                 puzzleBoard[index].innerText = puzzleData[j][i].assignedLetter;
-                puzzleSquares[index].style.borderColor = "black";
-                puzzleSquares[index].style.backgroundColor = "white";
+                puzzleSquares[index].classList.remove('notused');
             }
             else{
-                puzzleSquares[index].style.borderColor = "black";
-                puzzleSquares[index].style.backgroundColor = "black";
+                puzzleSquares[index].classList.add('notused');
             }
 
             if (puzzleData[j][i].referenceNumber != 0)
@@ -292,6 +292,20 @@ function stopTimer(){
 
 }
 
+function unhighlightPuzzle(){
+
+    const tableCells = document.getElementsByTagName('td');
+
+    for (const tableCell of tableCells) {
+        
+        tableCell.classList.remove("highlighted");
+        tableCell.classList.remove("blinking");
+    }
+
+    selectedCell = NOCELLSELECTED;
+
+}
+
 
 // Puzzle Solving Gameplay Functions
 
@@ -301,26 +315,73 @@ function makeClickable() {
 
     // create a listener on each table cell that remembers the offset of the element 
     // which can be used to find the corresponding data in the puzzle 
-    // arrays ([floor of i/MAXWIDTH][floor of i%MAXWIDTH])
+    // arrays ([floor of i%MAXWIDTH][floor of i/MAXWIDTH])
 
     for (let i = 0; i < tableCells.length; i++) {
 
         tableCells[i].onclick = (clickEvent) => {
 
-            // if currentClickedElement == i and the number is 0 then toggle the direction
+            currentReferenceNumber = solvedPuzzle[Math.floor(i % MAXWIDTH)]
+                                                    [Math.floor(i / MAXWIDTH)].referenceNumber;
 
-            // set the currentClicked Element
+            // if this cell is not the start of a word ignore the mouse click 
 
-            currentClickedElement = i;
+            if (currentReferenceNumber != 0){
 
-            // reset puzzle display to remove any previous highlighting
+                // otherwise, set the direction of the current word
 
-            // determine direction of chosen word 
+                if ( (currentReferenceNumber % 2) != 0 ) currentDirection = DOWN;
+                else currentDirection = ACROSS;
 
-            // highlight word box.
-            // highlight letter current letter box. 
-            
-            console.log( i + "the clickening");
+                // handle the case of a second click on the first word
+
+                if (currentReferenceNumber == 1)
+                    (currentClickedElement == i) ? currentDirection = DOWN: currentDirection = ACROSS;
+                
+                // set the currentClicked Element (for the second click case)
+
+                currentClickedElement = i;
+
+                // reset puzzle display to remove any previous highlighting
+
+                unhighlightPuzzle(); 
+
+                // highlight word box until you run out of letter boxes
+
+                let cellIndexOffset = 0;
+
+                do {
+
+                    if (currentDirection == ACROSS){  
+
+                        tableCells[i + cellIndexOffset].classList.add('highlighted');
+
+                        if ((i + ++cellIndexOffset) % MAXWIDTH == 0) cellIndexOffset = -1;
+                        else if ( solvedPuzzle[Math.floor((i + cellIndexOffset) % MAXWIDTH)]
+                        [Math.floor((i + cellIndexOffset) / MAXWIDTH)].assignedLetter == '?') 
+                            cellIndexOffset = -1;
+
+                    } else {
+                        
+                        tableCells[i + cellIndexOffset].classList.add('highlighted');
+
+                        cellIndexOffset += MAXWIDTH;
+
+                        if ( (i + cellIndexOffset) > (MAXHEIGHT * MAXWIDTH) )
+                            cellIndexOffset = -1;
+                        else if ( solvedPuzzle[Math.floor((i + cellIndexOffset) % MAXWIDTH)]
+                        [Math.floor((i + cellIndexOffset) / MAXWIDTH)].assignedLetter == '?') 
+                            cellIndexOffset = -1;
+
+                    }
+
+                } while ( cellIndexOffset != -1 );
+
+                // highlight letter current letter box. 
+
+                tableCells[i].classList.add('blinking');
+
+            }
         }
     }
 }
@@ -374,4 +435,5 @@ function isWon() {
 
 createNewPuzzle();
 displayTime();
+makeClickable();
 
