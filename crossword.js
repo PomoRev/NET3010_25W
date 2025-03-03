@@ -436,4 +436,5 @@ function isWon() {
 createNewPuzzle();
 displayTime();
 makeClickable();
+takeKeyPress();
 

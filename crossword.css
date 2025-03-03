@@ -248,7 +248,7 @@ p {
 
 .blinking {
 
-    background-color: darkgrey;
+    background-color: rgb(135, 134, 134);
     animation: blinking 1.5s linear infinite;
     
 
