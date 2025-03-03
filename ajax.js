@@ -5,6 +5,8 @@ function getWeather(){
     // Note that you may need to update this access key for the REST API.
 
 
+    // note how we use scoping to our advantage here...
+
     let targetURL = "https://api.openweathermap.org/data/2.5/weather?q=" + 
         selectcity.value + "&units=metric&appid=61bbddce6645887149f82026c105094b";
 
