@@ -176,6 +176,7 @@ main {
 
 td {
 
+    position: relative;
     border: solid 2px black;
     height: 24pt;
     width: 24pt;
@@ -219,9 +220,9 @@ p {
 .number {
 
     display: inline-block;
-    position: relative;
-    top: -14px;
-    left: -9px;
+    position: absolute;
+    top: 3px;
+    left: 2px;
 
     font-size: 8pt;
     color: rgb(67, 67, 67);
