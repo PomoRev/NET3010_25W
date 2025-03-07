@@ -294,7 +294,7 @@ function stopTimer(){
 
 function unhighlightPuzzle(){
 
-    const tableCells = document.getElementsByTagName('td');
+    const tableCells = document.querySelectorAll("#puzzle table tr td");
 
     for (const tableCell of tableCells) {
         
@@ -311,7 +311,7 @@ function unhighlightPuzzle(){
 
 function makeClickable() {
 
-    const tableCells = document.getElementsByTagName('td');
+    const tableCells = document.querySelectorAll("#puzzle table tr td");
 
     // create a listener on each table cell that remembers the offset of the element 
     // which can be used to find the corresponding data in the puzzle 
@@ -388,7 +388,7 @@ function makeClickable() {
 
 function turnOffClickable() {
 
-    const tableCells = document.getElementsByTagName('td');
+    const tableCells = document.querySelectorAll("#puzzle table tr td");
 
     for (let i = 0; i < tableCells.length; i++) {
 
