@@ -91,6 +91,29 @@ offline
 
 TO DO: Keyboard input handling
 
+- In a lab class we had a discussion about handling keyboard input. The following captures
+  that information (offline)
+
+When a candidate word is selected:
+
+  catch rt.arrow and dwn.arrow - make both move forward one space in word following the
+  direction of the word when there are more candidate letter spaces.
+
+  catch lt.arrow and up.arrow and backspace - make both move backward one space in word following the
+  words directionality (horizontal or vertical) when there are more candidate letter spaces.
+
+  These two do not care if there is a letter in that space, they simply move the highlighted 
+  letter box and allow typing of a letter to make a change to that box.
+
+  Catch upper and lower case letters (convert to lowercase always) and place them in the current
+  highlighted letter box. Move highlight ahead if there are more candidate spaces.
+
+  Catch delete and turn highlighted box into a space so that it renders as empty.
+
+  Catch the return key to deselect candidate word and check the win condition for the puzzle.
+
+CLASS 8: Interface development (responsive)
+
 
 
 
