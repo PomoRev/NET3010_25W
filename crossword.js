@@ -10,7 +10,7 @@
 const NOLETTER = '?';                                       /* character for an empty square */
 const NONUMBER = 0; /* token for a square that has no number to indicate the start of a word */
 const NOBESTTIME = Symbol('NOBESTTIME', {constant: true});         /* no saved best time yet */
-const NUMWORDS = 11;            /* number of words to attempt to generate from our word list */
+const NUMWORDS = 10;            /* number of words to attempt to generate from our word list */
 const MAXWIDTH = 12;                              /* width of the puzzle in character spaces */
 const MAXHEIGHT = 12;                           /* height of the puzzle in characters spaces */
 const NOTCLICKED = -1;                    /* constant for no currently selected puzzle space */
@@ -406,10 +406,72 @@ function takeKeyPress() {
 
         if (currentClickedElement != NOTCLICKED){
 
-            // process key press based on type of element in 
+            const tableCells = 
+                document.querySelectorAll("#puzzle table tr td");
+            let tempClickedElement = currentClickedElement;
 
-            console.log( keyEvent.key );
+            switch (keyEvent.key) {
+                case 'ArrowRight': 
+                case 'ArrowDown': 
 
+                    // using the direction and the current location 
+                    // determine if there is another candidate space
+                    // further in the word 
+
+                    if ((tempClickedElement % MAXWIDTH) != 0){
+
+                        console.log( "we have an arrow" );
+
+                        (currentDirection) ? 
+                            tempClickedElement++ : tempClickedElement += MAXWIDTH;
+
+
+                        if ((tempClickedElement < (MAXHEIGHT * MAXWIDTH)) && (solvedPuzzle[Math.floor((tempClickedElement) % MAXWIDTH)]
+                            [Math.floor((tempClickedElement) / 
+                            MAXWIDTH)].assignedLetter != '?')){ 
+
+                                console.log( "there is room to move" );
+
+                        tableCells[currentClickedElement].classList.remove('blinking');
+                        tableCells[currentClickedElement].classList.add('highlighted');
+
+                        tableCells[tempClickedElement].classList.remove('highlighted');
+                        tableCells[tempClickedElement].classList.add('blinking');
+
+                        currentClickedElement = tempClickedElement;
+                        }
+                    }
+                                      
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+
+                
+                    // using the direction and the current location 
+                    // determine if there is another candidate space
+                    // previously in the word 
+
+                    // turn current space into simple highlight
+
+                    // move to next space (change current location)
+
+                    // make that space blink
+
+                    break;
+
+                    case 'Delete':
+                    case 'Backspace':
+
+                    break;
+
+                    case 'Enter':
+
+                    break;
+            
+                default:
+                    console.log( keyEvent.key );
+                    break;
+            }
         }
     }
 
@@ -420,6 +482,23 @@ function turnOffKeyPress() {
     document.onkeydown = null;
 
 }
+
+// catch rt.arrow and dwn.arrow - make both move forward one space 
+// in word following the direction of the word when there are more 
+// candidate letter spaces.
+
+// catch lt.arrow and up.arrow and backspace - make both move backward one space in word following the
+// words directionality (horizontal or vertical) when there are more candidate letter spaces.
+
+// These two do not care if there is a letter in that space, they simply move the highlighted 
+// letter box and allow typing of a letter to make a change to that box.
+
+// Catch upper and lower case letters (convert to lowercase always) and place them in the current
+// highlighted letter box. Move highlight ahead if there are more candidate spaces.
+
+// Catch delete and turn highlighted box into a space so that it renders as empty.
+
+// Catch the return key to deselect candidate word and check the win condition for the puzzle.
 
 function isWon() {
 

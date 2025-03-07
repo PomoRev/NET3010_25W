@@ -14,7 +14,7 @@ puzzle
 
 - lists of clues (cluesAcross and cluesDown - both are arrays of strings (HTML)
 
-- timer holds the time spent on current puzzle
+- timer which holds the time spent on current puzzle
     - start time current session
     - time elapsed already (default 0)
 
