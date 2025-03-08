@@ -302,8 +302,6 @@ function unhighlightPuzzle(){
         tableCell.classList.remove("blinking");
     }
 
-    selectedCell = NOCELLSELECTED;
-
 }
 
 
@@ -380,6 +378,7 @@ function makeClickable() {
                 // highlight letter current letter box. 
 
                 tableCells[i].classList.add('blinking');
+                takeKeyPress();
 
             }
         }
@@ -406,9 +405,16 @@ function takeKeyPress() {
 
         if (currentClickedElement != NOTCLICKED){
 
+            keyEvent.preventDefault();
+
             const tableCells = 
                 document.querySelectorAll("#puzzle table tr td");
+
+            // hold the current and target element references in memory 
+
             let tempClickedElement = currentClickedElement;
+
+            // handle arrows, delete, return, and in default take care of letters
 
             switch (keyEvent.key) {
                 case 'ArrowRight': 
@@ -420,17 +426,11 @@ function takeKeyPress() {
 
                     if ((tempClickedElement % MAXWIDTH) != 0){
 
-                        console.log( "we have an arrow" );
-
                         (currentDirection) ? 
                             tempClickedElement++ : tempClickedElement += MAXWIDTH;
 
-
                         if ((tempClickedElement < (MAXHEIGHT * MAXWIDTH)) && (solvedPuzzle[Math.floor((tempClickedElement) % MAXWIDTH)]
-                            [Math.floor((tempClickedElement) / 
-                            MAXWIDTH)].assignedLetter != '?')){ 
-
-                                console.log( "there is room to move" );
+                            [Math.floor((tempClickedElement) / MAXWIDTH)].assignedLetter != '?')){ 
 
                         tableCells[currentClickedElement].classList.remove('blinking');
                         tableCells[currentClickedElement].classList.add('highlighted');
@@ -439,40 +439,93 @@ function takeKeyPress() {
                         tableCells[tempClickedElement].classList.add('blinking');
 
                         currentClickedElement = tempClickedElement;
+
                         }
                     }
                                       
                     break;
+
                 case 'ArrowLeft':
                 case 'ArrowUp':
-
                 
                     // using the direction and the current location 
                     // determine if there is another candidate space
                     // previously in the word 
 
-                    // turn current space into simple highlight
+                    if ((tempClickedElement % MAXWIDTH) != 0){
 
-                    // move to next space (change current location)
+                        (currentDirection) ? 
+                            tempClickedElement-- : tempClickedElement -= MAXWIDTH;
 
-                    // make that space blink
+                        if ((tempClickedElement > -1) && (solvedPuzzle[Math.floor((tempClickedElement) % MAXWIDTH)]
+                            [Math.floor((tempClickedElement) / MAXWIDTH)].assignedLetter != '?')){ 
+
+                        tableCells[currentClickedElement].classList.remove('blinking');
+                        tableCells[currentClickedElement].classList.add('highlighted');
+
+                        tableCells[tempClickedElement].classList.remove('highlighted');
+                        tableCells[tempClickedElement].classList.add('blinking');
+
+                        currentClickedElement = tempClickedElement;
+                        
+                        }
+                    }
 
                     break;
 
                     case 'Delete':
                     case 'Backspace':
 
+                        solvedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
+                            [Math.floor((currentClickedElement) / MAXWIDTH)].assignedLetter = ' ';
+                        tableCells[currentClickedElement].querySelector('.letter').innerText = ' ';
+
                     break;
 
                     case 'Enter':
+
+                        currentClickedElement = NOTCLICKED;
+                        unhighlightPuzzle();
+
+// TODO - check for win condition 
 
                     break;
             
                 default:
                     console.log( keyEvent.key );
+
+                    if ((keyEvent.key.length == 1) && 
+                        (keyEvent.key[0].toLocaleLowerCase() != keyEvent.key[0].toLocaleUpperCase())){
+
+                        solvedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
+                            [Math.floor((currentClickedElement) / MAXWIDTH)].assignedLetter 
+                            = keyEvent.key[0].toLocaleLowerCase();
+                        tableCells[currentClickedElement].querySelector('.letter').innerText
+                            = keyEvent.key[0].toLocaleLowerCase();
+
+                        (currentDirection) ? 
+                            tempClickedElement++ : tempClickedElement += MAXWIDTH;
+
+                        if ((tempClickedElement % MAXWIDTH) != 0){
+             
+                            if ((tempClickedElement < (MAXHEIGHT * MAXWIDTH)) && (solvedPuzzle[Math.floor((tempClickedElement) % MAXWIDTH)]
+                                [Math.floor((tempClickedElement) / MAXWIDTH)].assignedLetter != '?')){ 
+    
+                            tableCells[currentClickedElement].classList.remove('blinking');
+                            tableCells[currentClickedElement].classList.add('highlighted');
+    
+                            tableCells[tempClickedElement].classList.remove('highlighted');
+                            tableCells[tempClickedElement].classList.add('blinking');
+    
+                            currentClickedElement = tempClickedElement;
+    
+                            }
+                        }
+                    }
+
                     break;
             }
-        }
+        } 
     }
 
 }
@@ -515,5 +568,5 @@ function isWon() {
 createNewPuzzle();
 displayTime();
 makeClickable();
-takeKeyPress();
+
 
