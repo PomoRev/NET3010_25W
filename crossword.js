@@ -424,7 +424,7 @@ function takeKeyPress() {
                     // determine if there is another candidate space
                     // further in the word 
 
-                    if ((tempClickedElement % MAXWIDTH) != 0){
+                    if ((tempClickedElement == 0) || ((tempClickedElement + 1) % MAXWIDTH) != 0){
 
                         (currentDirection) ? 
                             tempClickedElement++ : tempClickedElement += MAXWIDTH;
@@ -452,7 +452,8 @@ function takeKeyPress() {
                     // determine if there is another candidate space
                     // previously in the word 
 
-                    if ((tempClickedElement % MAXWIDTH) != 0){
+                    if ((!currentDirection) && (tempClickedElement < (MAXHEIGHT * MAXWIDTH)) || 
+                       ((currentDirection) && (((tempClickedElement) % MAXWIDTH) != 0))){
 
                         (currentDirection) ? 
                             tempClickedElement-- : tempClickedElement -= MAXWIDTH;
@@ -460,21 +461,20 @@ function takeKeyPress() {
                         if ((tempClickedElement > -1) && (solvedPuzzle[Math.floor((tempClickedElement) % MAXWIDTH)]
                             [Math.floor((tempClickedElement) / MAXWIDTH)].assignedLetter != '?')){ 
 
-                        tableCells[currentClickedElement].classList.remove('blinking');
-                        tableCells[currentClickedElement].classList.add('highlighted');
+                            tableCells[currentClickedElement].classList.remove('blinking');
+                            tableCells[currentClickedElement].classList.add('highlighted');
 
-                        tableCells[tempClickedElement].classList.remove('highlighted');
-                        tableCells[tempClickedElement].classList.add('blinking');
+                            tableCells[tempClickedElement].classList.remove('highlighted');
+                            tableCells[tempClickedElement].classList.add('blinking');
 
-                        currentClickedElement = tempClickedElement;
-                        
+                            currentClickedElement = tempClickedElement;
                         }
                     }
 
                     break;
 
-                    case 'Delete':
-                    case 'Backspace':
+                case 'Delete':
+                case 'Backspace':
 
                         solvedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
                             [Math.floor((currentClickedElement) / MAXWIDTH)].assignedLetter = ' ';
@@ -482,22 +482,31 @@ function takeKeyPress() {
 
                     break;
 
-                    case 'Enter':
+                case 'Enter':
 
                         currentClickedElement = NOTCLICKED;
                         unhighlightPuzzle();
 
-// TODO - check for win condition 
+                        if (isWon()) {
+
+                            stopTimer();
+                            turnOffClickable();
+                            turnOffKeyPress();
+
+                            console.log("winner!");
+
+// HANDLE RECORDING A WIN AND REPORTING A WIN
+
+                        }
 
                     break;
             
                 default:
-                    console.log( keyEvent.key );
 
                     if ((keyEvent.key.length == 1) && 
                         (keyEvent.key[0].toLocaleLowerCase() != keyEvent.key[0].toLocaleUpperCase())){
 
-                        solvedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
+                        guessedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
                             [Math.floor((currentClickedElement) / MAXWIDTH)].assignedLetter 
                             = keyEvent.key[0].toLocaleLowerCase();
                         tableCells[currentClickedElement].querySelector('.letter').innerText
@@ -506,8 +515,9 @@ function takeKeyPress() {
                         (currentDirection) ? 
                             tempClickedElement++ : tempClickedElement += MAXWIDTH;
 
-                        if ((tempClickedElement % MAXWIDTH) != 0){
-             
+                        if ((!currentDirection) && (tempClickedElement < (MAXHEIGHT * MAXWIDTH)) || 
+                            ((currentDirection) && ((tempClickedElement % MAXWIDTH) != 0))){
+            
                             if ((tempClickedElement < (MAXHEIGHT * MAXWIDTH)) && (solvedPuzzle[Math.floor((tempClickedElement) % MAXWIDTH)]
                                 [Math.floor((tempClickedElement) / MAXWIDTH)].assignedLetter != '?')){ 
     
@@ -536,29 +546,22 @@ function turnOffKeyPress() {
 
 }
 
-// catch rt.arrow and dwn.arrow - make both move forward one space 
-// in word following the direction of the word when there are more 
-// candidate letter spaces.
-
-// catch lt.arrow and up.arrow and backspace - make both move backward one space in word following the
-// words directionality (horizontal or vertical) when there are more candidate letter spaces.
-
-// These two do not care if there is a letter in that space, they simply move the highlighted 
-// letter box and allow typing of a letter to make a change to that box.
-
-// Catch upper and lower case letters (convert to lowercase always) and place them in the current
-// highlighted letter box. Move highlight ahead if there are more candidate spaces.
-
-// Catch delete and turn highlighted box into a space so that it renders as empty.
-
-// Catch the return key to deselect candidate word and check the win condition for the puzzle.
-
 function isWon() {
 
     let puzzleWon = true;
 
     // compares the guessed letters with the puzzle solution 
     // and returns true if puzzle is solved
+
+    for (let i = 0; i < MAXHEIGHT; i++){
+
+        for(let ii = 0; ii < MAXWIDTH; ii++){
+
+            if (solvedPuzzle[ii][i].assignedLetter != guessedPuzzle[ii][i].assignedLetter)
+                puzzleWon = false;
+
+        }
+    }
 
     return puzzleWon;
 }
