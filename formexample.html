@@ -43,7 +43,7 @@
 </head>
 <body style="background-color: darkgrey;">
     <header>Form Example</header>
-    <form action="" method="get">
+    <form action="" method="get" onsubmit="return checkForm();">
         <div class="element">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -65,5 +65,18 @@
         
         <input type="submit" value="Submit">
     </form>
+
+
+    <script>
+
+        function checkForm() {
+
+            let formValidity = true;
+
+            return formValidity;
+
+        }
+
+    </script>
 </body>
 </html>
