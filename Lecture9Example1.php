@@ -12,6 +12,7 @@
 	<header>PHP Testing File</header>
 	<?PHP
 		echo "hello world";
+		oranges = great;
 	?>
 </body>
 </html>
