@@ -123,6 +123,40 @@ offline
 
 TODO: Begin to plan out the macro controls (load,save,restart, etc.)
 
+CLASS 9: Backend/Frontend functionality
+
+- define where functionality works and what needs to be on the 
+  front end for the interface to work.
+
+
+explicit
+
+LOGIN - username, password, highscore (0)
+
+NEW/SAVE - (save only if logged in)
+  - if logged in save the puzzle
+  - create a new puzzle
+
+LOAD - (only if logged in)
+  - display selectable uncompleted puzzles 
+  - save existing puzzle and load in the selected puzzle
+
+implicit functions for when a puzzle is won
+
+  - on the front end when logged in
+    - flag puzzle for removal of uncompleted puzzles
+    - save the high score (if better than previous high 
+      score: on backend) 
+    - create a new puzzle (this will likely happen on 
+      return to front end)
+
+  - on the back end when logged in
+    - remove any flagged puzzle
+    - save high score with user if better
+    - return to the front end making a new puzzle
+
+
+
 
 
 

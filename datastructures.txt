@@ -55,3 +55,27 @@ NOCELLSELECTED - constant for not having any starting point for typing letters (
 query selectors
 
 '#puzzle table tr td' - grab every cell for the current puzzle board (used for consistency)
+
+
+database
+
+user
+  PK userid (database generated)
+  username (text)
+  password (text)
+  besttime (time in seconds)
+
+puzzle (incomplete puzzles)
+  PZ - pid (database generated)
+  timespent (time in seconds)
+  datestarted (timestamp)
+  puzzlesolution (JSON)
+  puzzleguessed (JSON)
+  acrossclues (JSON)
+  downclues (JSON)
+  FK - userid
+
+
+
+
+
