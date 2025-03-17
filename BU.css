@@ -1,0 +1,88 @@
+BODY {
+    font-size : 2vw;
+    background-color: cadetblue;
+}
+
+H1 	{
+    font-size : 3vw;
+}
+
+HEADER	{
+    background-color: #023398;
+    font-family: "Palatino", Times, serif;
+    text-align: right;
+    color: white;
+    margin-right: 5pt;
+    padding: 10px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 10vw;
+    line-height: 1vw;
+    margin: 4vw;
+    margin-right: 5pt;
+}
+
+.slogan {
+    font-size: 2vw;
+    font-style: italic;
+    line-height: 1vw;
+    margin: 3vw;
+}
+
+.flexnav {
+    display: flex;
+    justify-content: space-around;
+    margin: 4px;
+    margin-right: 5pt;
+    margin-left: 0;
+    background-color: #023398;
+    font-family: Arial, sans-serif;
+    font-size: 2vw;
+}
+
+.navbutton a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.navbutton a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.navbutton a:hover {
+    text-decoration: none;
+    color: #dbfeff;
+}
+
+.navbutton a:active {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+        
+}
+
+.contentImage {
+    display : float;
+    width : 20%;
+    float : right;
+
+}
+
+FOOTER	{
+    background-color: #023398;
+    font-family: "Palatino", Times, serif;
+    text-align: center;
+    color: white;
+    margin-right: 5pt;
+    font-size: 1.5vw;
+}
+
+INPUT {
+    font-size : 1.5vw;
+
+}
