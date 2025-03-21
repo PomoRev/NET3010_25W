@@ -160,6 +160,9 @@ offline
 - added JS functionality to be augmented with PHP database fetching
 - added a login card with functionality to close, login, create user
 - added login validation (front end only, ready for backend)
+- added placeholders for save and load functions (TODO: turn this into a form and add 
+  puzzle setup hidden fields)
+- added hidden fields to login and register forms and tweaked the layout
 
 
 

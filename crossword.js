@@ -611,8 +611,15 @@ function validateName() {
     let existingUserName = true;
 
     if (!existingUserName) document.querySelector(".feedback").innerText = "User name not found";
-    else existingUserName = checkPassword("oldpassword");
+    else {
+        
+        existingUserName = checkPassword("oldpassword");
+        // preparePuzzleToSave();
+    
+    }
+
     return existingUserName;
+
 }
 
 function checkPassword(passwordToCheck) {
@@ -631,6 +638,37 @@ function checkPassword(passwordToCheck) {
     return passwordGood;
 
 }
+
+function saveGame() {
+
+    let puzzleReady = true;
+
+    stopTimer();
+
+    if (currentUser == "Anonymous") {
+
+        openLogin();
+        puzzleReady = false;
+
+    } else {
+
+        // preparePuzzleToSave();
+
+    }
+
+    return puzzleReady;
+
+}
+
+function loadGame() {
+
+    let hasPuzzles = true;
+
+    // list the user's games in a dialogue as selectable in another form 
+
+    return hasPuzzles;
+
+} 
 
 // testing Code 
 

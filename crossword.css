@@ -289,6 +289,24 @@ p {
 
 }
 
+.formdivider {
+
+    display: block;
+    margin-left: 15px;
+
+}
+
+.formtitle {
+
+    display: block;
+    height: 20pt;
+    font-size: 18pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
 .formclose {
 
     width: 14pt;
@@ -308,8 +326,10 @@ form, form button, form input {
 
 form button {
 
-    margin: 10px auto;
     background-color: aliceblue;
+    margin: 10px auto;
+    padding: 5px 10px;
+    border-radius: 10px;
 
 }
 

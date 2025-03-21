@@ -32,10 +32,10 @@
         <nav>
             <button id="puzzlecontrol">Control Puzzle</button>
             <div class="dropdown">
-                <button onclick="openLogin();">login</button>
+                <button onclick="openLogin()">login</button>
                 <button>new game</button>
-                <button onclick="stopTimer();">save game</button>
-                <button onclick="displayTime();">load game</button>
+                <button onclick="saveGame()">save game</button>
+                <button onclick="loadGame()">load game</button>
             </div>
         </nav>
     </div>
@@ -247,18 +247,30 @@
         <img class="formclose" src="images/check-box.png" alt="close button" onclick="closeLogin()">
         <div class="formelements">
             <form action="" method="get" onsubmit="return validateName()">
+                <div class="formtitle">login</div>
                 <label for="existinguser">username:</label>
                 <input type="text" name="name" id="existinguser"><br>
                 <label for="oldpassword">password:</label>
                 <input type="password" name="password" id="oldpassword"><br>
+                <input type="hidden" name="solvedpuzzle">
+                <input type="hidden" name="guessedpuzzle">
+                <input type="hidden" name="timer">
+                <input type="hidden" name="acrossclues">
+                <input type="hidden" name="downclues">
                 <button type="submit">login</button>
             </form>
             <img class="formdivider" src="images/vert_line.png" alt="decorative line">
             <form action="" method="get" onsubmit="return checkIfNameAvailable()">
+                <div class="formtitle">register</div>
                 <label for="newuser">choose a username:</label>
                 <input type="text" name="name" id="newuser"><br>
                 <label for="newpassword">choose a password:</label>
                 <input type="password" name="password" id="newpassword"><br>
+                <input type="hidden" name="solvedpuzzle">
+                <input type="hidden" name="guessedpuzzle">
+                <input type="hidden" name="timer">
+                <input type="hidden" name="acrossclues">
+                <input type="hidden" name="downclues">
                 <button type="submit">login</button>
             </form>
         </div>
