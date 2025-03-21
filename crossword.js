@@ -590,16 +590,32 @@ function openLogin() {
 
 }
 
+function openPuzzleList() {
+
+    document.querySelector(".gamepicker").style.setProperty("display","block");
+
+}
+
+function closePuzzleList() {
+
+    document.querySelector(".gamepicker").style.setProperty("display","none");
+
+}
+
 function checkIfNameAvailable() {
 
     console.log("validating");
 
     let availability = true;
 
-    // uses a list of names fetched by PHP. 
+    // uses a list of names fetched by PHP.
+
+    let proposedName = document.getElementById('newuser').value;
+    availability = !(users.includes(proposedName));
 
     if (!availability) document.querySelector(".feedback").innerText = "Name already taken";
     else availability = checkPassword("newpassword");
+
     return availability;
 
 }
@@ -653,6 +669,7 @@ function saveGame() {
     } else {
 
         // preparePuzzleToSave();
+        openPuzzleList();
 
     }
 

@@ -1,9 +1,26 @@
 <?php
     session_start();
 
-    $username = $_GET['name'] ?? "Anonymous";
+    $username = $_POST['name'] ?? "Anonymous";
 
     include_once("crosswordDBhelper.php");
+
+    // if()
+
+    // // process header 
+
+    // $db_connection = connect_to_database();
+    // $myquery = "SELECT username FROM crossword.users";
+    // $results = execute_query( $myquery, $db_connection);
+
+    // if( mysqli_num_rows($results) > 0){        
+    //     while ($row = mysqli_fetch_assoc($results)){
+    //         echo "users.push( '" .$row['username']. "' );";
+    //     }
+    // }
+
+    // close_database_connection( $db_connection );
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +38,11 @@
 
     <script>
         const users = [];
+        const puzzleList = [];
 <?php 
+
+// get the names of all the users for validation
+
     $db_connection = connect_to_database();
     $myquery = "SELECT username FROM crossword.users";
     $results = execute_query( $myquery, $db_connection);
@@ -33,6 +54,7 @@
     }
 
     close_database_connection( $db_connection );
+
 ?>
     </script>
 </head>
@@ -271,7 +293,7 @@
     <div class="logincard">
         <img class="formclose" src="images/check-box.png" alt="close button" onclick="closeLogin()">
         <div class="formelements">
-            <form action="" method="get" onsubmit="return validateName()">
+            <form action="" method="post" onsubmit="return validateName()">
                 <div class="formtitle">login</div>
                 <label for="existinguser">username:</label>
                 <input type="text" name="name" id="existinguser"><br>
@@ -285,7 +307,7 @@
                 <button type="submit">login</button>
             </form>
             <img class="formdivider" src="images/vert_line.png" alt="decorative line">
-            <form action="" method="get" onsubmit="return checkIfNameAvailable()">
+            <form action="" method="post" onsubmit="return checkIfNameAvailable()">
                 <div class="formtitle">register</div>
                 <label for="newuser">choose a username:</label>
                 <input type="text" name="name" id="newuser"><br>
@@ -301,6 +323,36 @@
         </div>
         <div class="feedback"></div>
     </div>
+<?php 
+    if ($username != "Anonymous"){ 
+?>    
+    <div class="gamepicker">
+        <img class="formclose" src="images/check-box.png" alt="close button" onclick="closePuzzleList()">
+        <div class="formtitle">
+            <?php echo $username; ?> please choose a game: 
+        </div>
+        <ol>
+<?php
+   
+    $db_connection = connect_to_database();
+    $myquery = "SELECT datestarted, puzzleID FROM crossword.puzzles WHERE ".
+               "userID = SELECT userID FROM crossword.users WHERE username = $username";
+    $results = execute_query( $myquery, $db_connection);
+
+    if( mysqli_num_rows($results) > 0){        
+        while ($row = mysqli_fetch_assoc($results)){
+            echo "<li>Game started " . $row['datestarted'] . "</li>";
+            echo "<script>puzzlelist.push( '" .$row['puzzleID']. "' );</script>";
+        }
+    }
+
+    close_database_connection( $db_connection );
+?>
+        </ol>
+    </div>
+<?php
+    }
+?>
     <footer>NET3010W25 - Tutorial Class Project</footer>
 </body>
 </html>

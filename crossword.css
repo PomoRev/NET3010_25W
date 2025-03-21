@@ -263,14 +263,13 @@ p {
 
 /* form elements  */
 
-.logincard {
+.logincard, .gamepicker {
 
     border: var(--fgcolour) 3px solid;
     border-radius: 15px;
     background-color: var(--bgcolour);
 
     width: fit-content;
-    margin: auto;
     padding: 10px;
     position: absolute;
     top: 50%;
@@ -292,7 +291,7 @@ p {
 .formdivider {
 
     display: block;
-    margin-left: 15px;
+    margin-left: 20px;
 
 }
 
