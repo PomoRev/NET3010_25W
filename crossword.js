@@ -36,7 +36,7 @@ let timerIntervalID = null;
 
 // Global Variables (Login)
 
-let currentUser = "Anonymous";
+let currentUser = document.getElementById('username').innerText;
 
 // Puzzle Generation Functions
 

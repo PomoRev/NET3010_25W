@@ -13,7 +13,7 @@
 function connect_to_database(){
 
     $servername = "localhost";
-    $dbuser = "webusers";
+    $dbuser = "webuser";
     $dbpassword = "password";
 
     $connection = mysqli_connect($servername, $dbuser, $dbpassword);
@@ -38,9 +38,6 @@ function execute_query($query, $connection){
 }
 
 ?>
-
-// the following code gives us an example of how to use this helper
-
 
 <?php
 

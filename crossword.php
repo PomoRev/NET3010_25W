@@ -1,8 +1,13 @@
+<?php
+    session_start();
+
+    $username = $_GET['name'] ?? "Anonymous";
+
+    include_once("crosswordDBhelper.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- this is no longer used see crossword.php  -->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +18,23 @@
     <title>Tutorial Crossword</title>
     <script src="word_data.js"></script>
     <script src="crossword.js" defer></script>
+
+    <script>
+        const users = [];
+<?php 
+    $db_connection = connect_to_database();
+    $myquery = "SELECT username FROM crossword.users";
+    $results = execute_query( $myquery, $db_connection);
+
+    if( mysqli_num_rows($results) > 0){        
+        while ($row = mysqli_fetch_assoc($results)){
+            echo "users.push( '" .$row['username']. "' );";
+        }
+    }
+
+    close_database_connection( $db_connection );
+?>
+    </script>
 </head>
 <body>
     <header>
@@ -30,7 +52,7 @@
     </header>
 
     <div id="heading">
-        <span id="username"></span>
+        <span id="username"><?php echo $username ?></span>
         <span id="timer">00:00:00</span>
         <nav>
             <button id="puzzlecontrol">Control Puzzle</button>
