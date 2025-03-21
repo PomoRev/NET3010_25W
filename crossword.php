@@ -335,8 +335,7 @@
 <?php
    
     $db_connection = connect_to_database();
-    $myquery = "SELECT datestarted, puzzleID FROM crossword.puzzles WHERE ".
-               "userID = SELECT userID FROM crossword.users WHERE username = $username";
+    $myquery = "SELECT datestarted, puzzleID FROM crossword.puzzles WHERE userID in SELECT userID FROM crossword.users WHERE username = '" . $username . "'";
     $results = execute_query( $myquery, $db_connection);
 
     if( mysqli_num_rows($results) > 0){        
