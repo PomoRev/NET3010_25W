@@ -155,7 +155,11 @@ implicit functions for when a puzzle is won
     - save high score with user if better
     - return to the front end making a new puzzle
 
+offline
 
+- added JS functionality to be augmented with PHP database fetching
+- added a login card with functionality to close, login, create user
+- added login validation (front end only, ready for backend)
 
 
 

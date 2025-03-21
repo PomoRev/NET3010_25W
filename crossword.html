@@ -27,12 +27,12 @@
     </header>
 
     <div id="heading">
-        <span id="username">Anonymous</span>
+        <span id="username"></span>
         <span id="timer">00:00:00</span>
         <nav>
             <button id="puzzlecontrol">Control Puzzle</button>
             <div class="dropdown">
-                <button>login</button>
+                <button onclick="openLogin();">login</button>
                 <button>new game</button>
                 <button onclick="stopTimer();">save game</button>
                 <button onclick="displayTime();">load game</button>
@@ -243,6 +243,27 @@
             </p>
         </div>
     </main>
+    <div class="logincard">
+        <img class="formclose" src="images/check-box.png" alt="close button" onclick="closeLogin()">
+        <div class="formelements">
+            <form action="" method="get" onsubmit="return validateName()">
+                <label for="existinguser">username:</label>
+                <input type="text" name="name" id="existinguser"><br>
+                <label for="oldpassword">password:</label>
+                <input type="password" name="password" id="oldpassword"><br>
+                <button type="submit">login</button>
+            </form>
+            <img class="formdivider" src="images/vert_line.png" alt="decorative line">
+            <form action="" method="get" onsubmit="return checkIfNameAvailable()">
+                <label for="newuser">choose a username:</label>
+                <input type="text" name="name" id="newuser"><br>
+                <label for="newpassword">choose a password:</label>
+                <input type="password" name="password" id="newpassword"><br>
+                <button type="submit">login</button>
+            </form>
+        </div>
+        <div class="feedback"></div>
+    </div>
     <footer>NET3010W25 - Tutorial Class Project</footer>
 </body>
 </html>

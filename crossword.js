@@ -34,6 +34,10 @@ let currentClickedElement = NOTCLICKED;
 let timer = 0;
 let timerIntervalID = null;
 
+// Global Variables (Login)
+
+let currentUser = "Anonymous";
+
 // Puzzle Generation Functions
 
 function createNewPuzzle() {
@@ -566,10 +570,74 @@ function isWon() {
     return puzzleWon;
 }
 
+// Form Functionality & User Management
+
+function displayUserName (userName){
+
+    document.getElementById("username").innerText = userName;
+
+}
+
+function closeLogin() {
+
+    document.querySelector(".logincard").style.setProperty("display","none"); 
+
+}
+
+function openLogin() {
+
+    document.querySelector(".logincard").style.setProperty("display","block"); 
+
+}
+
+function checkIfNameAvailable() {
+
+    console.log("validating");
+
+    let availability = true;
+
+    // uses a list of names fetched by PHP. 
+
+    if (!availability) document.querySelector(".feedback").innerText = "Name already taken";
+    else availability = checkPassword("newpassword");
+    return availability;
+
+}
+
+function validateName() {
+
+    console.log("validating");
+
+    let existingUserName = true;
+
+    if (!existingUserName) document.querySelector(".feedback").innerText = "User name not found";
+    else existingUserName = checkPassword("oldpassword");
+    return existingUserName;
+}
+
+function checkPassword(passwordToCheck) {
+
+    console.log("validating password");
+
+    let passwordGood = true;
+
+    let password = document.getElementById(passwordToCheck).value; 
+
+    if (password.length < 5){
+        passwordGood = false;
+        document.querySelector(".feedback").innerText = "Password too short";
+    }
+
+    return passwordGood;
+
+}
+
 // testing Code 
 
+displayUserName(currentUser);
 createNewPuzzle();
 displayTime();
 makeClickable();
+
 
 
