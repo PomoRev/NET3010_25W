@@ -480,7 +480,7 @@ function takeKeyPress() {
                 case 'Delete':
                 case 'Backspace':
 
-                        solvedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
+                        guessedPuzzle[Math.floor((currentClickedElement) % MAXWIDTH)]
                             [Math.floor((currentClickedElement) / MAXWIDTH)].assignedLetter = ' ';
                         tableCells[currentClickedElement].querySelector('.letter').innerText = ' ';
 
