@@ -630,7 +630,12 @@ function validateName() {
     else {
         
         existingUserName = checkPassword("oldpassword");
-        // preparePuzzleToSave();
+        
+        let solvedPuzzlesJSON = 
+            document.querySelectorAll("input[name='solvedpuzzle']");
+
+        solvedPuzzlesJSON[0].value = solvedPuzzlesJSON.value[1] = JSON.stringify(solvedPuzzle);
+
     
     }
 

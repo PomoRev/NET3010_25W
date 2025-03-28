@@ -39,36 +39,3 @@ function execute_query($query, $connection){
 
 ?>
 
-<?php
-
-/* echo "start<br>";
-
-$db_connection = connect_to_database();
-
-echo "<br>connected";
-
-echo "<br>query ";
-
-$myquery = "SELECT * FROM webusers.test";
-
-$results = execute_query( $myquery, $db_connection);
-
-if( mysqli_num_rows($results) > 0){
-
-    echo "<ul>";
-
-    while ($row = mysqli_fetch_assoc($results)){
-
-        echo "<li>" . $row["name"] . " = usernumber " . $row["usernumber"] . "</li>";
-
-    }
-
-    echo "</ul>";
-
-}
-
-close_database_connection( $db_connection );
-
-echo "<br>closed"; */
-
-?>

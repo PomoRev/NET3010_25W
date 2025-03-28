@@ -3,6 +3,12 @@
 
     $username = $_POST['name'] ?? "Anonymous";
 
+    $sessiondata = $_SERVER['SCRIPT_FILENAME'] . "<hr>";
+
+    echo $sessiondata;
+
+    include("text.php");
+
     include_once("crosswordDBhelper.php");
 
     // if()
