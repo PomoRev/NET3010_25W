@@ -1,0 +1,30 @@
+<!-- PARSING CODE WITH SIMPLE JAVASCRIPT 
+     SHOWING WHAT IS DISPLAYED IN THE RENDERED WINDOW OF THE BROWSER  -->
+
+<!-- Instructions: What is rendered on the page after it is loaded and the button pressed? -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tracing Practice</title>
+    <script>
+        function runCode() {
+            document.querySelector("output").innerText = "le code s'est exécuté correctement.";
+        }
+    </script>
+</head>
+<body>
+    <header>Tracer le code</header>
+    <code lang="en">
+        let french = 14;<br>
+        while (french > 12) console.log("étape " + french);<br>
+        document.querySelector("header").visible = "hidden";<br>
+        return french;<br>
+    </code>
+    <button onclick="runCode()">exécuter le code</button>
+    <hr>
+    <output lang="en">
+    </output>
+</body>
+</html>

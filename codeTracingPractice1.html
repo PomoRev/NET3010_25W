@@ -1,0 +1,32 @@
+<!-- PARSING CSS SHOWING WHAT IS DISPLAYED IN THE RENDERED WINDOW OF THE BROWSER  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Tracing Exercise</title>
+    <style>
+        .top { text-align: left; }
+        h1 { text-align: center; font-weight: unset; 
+             text-decoration: underline; font-size: unset; }
+        li:nth-child(2) { display: none; }
+        ul { list-style-type: square; }
+        p[class="top"], p { margin-left: 5%; }
+    </style>
+</head>
+<body>
+    <h1 class="top">At the Bottom of the Page</h1>
+    <hr>
+    <main>
+        <p>Everything you need to know about the bottom of a page.</p>
+        <ul>
+            <li>Home of the page number.</li>
+            <li>Can have a small line to distinguish it from the rest of the page.</li>
+            <li>Footnotes live here.</li>
+            <li>Footnotes can contain extra information for the reader.</li>
+            <li>Other information can appear here in a footer.</li>
+        </ul>
+        <p>There is more I'm sure, but enough for now.</p>
+    </main>
+</body>
+</html>
