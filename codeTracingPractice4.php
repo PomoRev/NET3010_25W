@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php $name = $_POST['name'] ?? $_GET['name'] ?? "TITLE"; ?></title>
+    <title><?php $name = $_POST['name'] ?? $_GET['name']; ?></title>
 </head>
 <body>
     <header>Another Short One</header>

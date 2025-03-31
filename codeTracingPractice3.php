@@ -41,7 +41,8 @@
     <form action="codeTracingPractice3.php" method="get">
 
         Name: 
-        <input type="text" name="name" <?php if (isset($_GET['name'])) echo 'value="' . $name . '"'; ?>
+        <input type="text" name="name" 
+        <?php if (isset($_GET['name'])) echo 'value="' . $name . '"'; ?>
         ><br>
         Number: <input type="number" name="cycles">
         <br>
